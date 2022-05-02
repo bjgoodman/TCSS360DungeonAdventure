@@ -1,6 +1,5 @@
 package model;
 
-import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class DungeonCharacter {
@@ -17,7 +16,7 @@ public abstract class DungeonCharacter {
 	private float myChanceToHit;
 	private float myAbilityChance;
 	private float myDefense;
-	private LinkedList<Item> myItems = new LinkedList<>();
+	private Item[] myInventory = new Item[6];
 	
 	public DungeonCharacter(final String theName) {
 		myCharacterName = theName;
@@ -112,16 +111,6 @@ public abstract class DungeonCharacter {
 		myDefense = theDefense;
 	}
 
-	// ITEM METHODS -> IMPLEMENT WITH LINKED LIST
-	
-//	public Item[] getMyItems() {
-//		return myItems;
-//	}
-//
-//	public void setMyItems(final Item[] theItems) {
-//		myItems = theItems;
-//	}
-
 	public float getMyAttackReduction() {
 		return (1 - getMyDefense());
 	}
@@ -133,7 +122,15 @@ public abstract class DungeonCharacter {
 	public void setMyCharacterDescription(final String theCharacterDescription) {
 		myCharacterDescription = theCharacterDescription;
 	}
-	
+
+	public Item[] getMyInventory() {
+		return myInventory;
+	}
+
+	public void setMyInventory(final Item[] theInventory) {
+		myInventory = theInventory;
+	}
+
 	// MAGIC NUMBER
 	public int damageDealt() {
 		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + 1);
@@ -147,7 +144,8 @@ public abstract class DungeonCharacter {
 				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());
 				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 				System.out.println(this.getMyCharacterName() + " dealt " + damageDone 
-						+ " to " + theTarget.getMyCharacterName() + ".");
+						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
+						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 			} else {
 				System.out.println(this.getMyCharacterName() + "'s attack missed!");
 			}
@@ -158,7 +156,33 @@ public abstract class DungeonCharacter {
 		}
 	}
 	
-	abstract void useAbility(DungeonCharacter theTarget);
+	public void useItemSelf(final int theItemSlot) {
+		Item item = getMyInventory()[theItemSlot];
+		item.itemEffectActivate(this);
+		if (!(item.isReusable())) {
+			this.getMyInventory()[theItemSlot] = null;
+		}
+	}
 	
-	abstract void useItem(DungeonCharacter theTarget, Item theItem);
+	public void useItemTargeted(final int theItemSlot, final DungeonCharacter theTarget) {
+		Item item = getMyInventory()[theItemSlot];
+		if (item.isTargetable()) {
+			item.itemEffectActivate(theTarget);
+		}
+		if (!(item.isReusable())) {
+			this.getMyInventory()[theItemSlot] = null;
+		}
+	}
+	
+	public String inventoryToString() {
+		String str = getMyCharacterName() + "'s inventory: ";
+		for (Item item: getMyInventory()) {
+			if (item != null) {
+				str += "[" + item.getMyItemName() + "] ";
+			}
+		}
+		return str;
+	}
+	
+	abstract void useAbility(final DungeonCharacter theTarget);
 }

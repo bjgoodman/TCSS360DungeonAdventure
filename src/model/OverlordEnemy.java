@@ -41,9 +41,10 @@ public class OverlordEnemy extends DungeonCharacter {
 	
 	// BAD CODE SMELL HERE?
 	private void threeFoldStrikeSwing(DungeonCharacter theTarget, int strikeNumber) {
+		float threefoldModifier = (float) 0.9;
 		if (theTarget.isAlive() ) {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());
+				int damageDone = Math.round((damageDealt() * theTarget.getMyAttackReduction()) * threefoldModifier);
 				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
 				String abilityText = (this.getMyCharacterName() + " dealt " + damageDone 
 						+ " to " + theTarget.getMyCharacterName() + ".");
@@ -63,19 +64,12 @@ public class OverlordEnemy extends DungeonCharacter {
 				} else if (strikeNumber == 3) {
 					System.out.println(this.getMyCharacterName() + "'s third swing missed!");
 				}
-				
 			}
+			System.out.println(this.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 			if (theTarget.getMyCurrentHitPoints() <= ZERO) {
 				System.out.println(theTarget.getMyCharacterName() + " died!");
 				theTarget.setAlive(false);
 			}
 		}
 	}
-
-	@Override
-	void useItem(DungeonCharacter theTarget, Item theItem) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

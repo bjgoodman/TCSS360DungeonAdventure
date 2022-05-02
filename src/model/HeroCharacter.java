@@ -10,7 +10,7 @@ public class HeroCharacter extends DungeonCharacter {
 			+ " his enemies limbs off, lowering their ability to deal damage.";
 	private static final String MY_ABILITY = "Dismembering Swing";
 	private static final int MY_AD_MAX = 32;
-	private static final int MY_AD_MIN = 15;
+	private static final int MY_AD_MIN = 19;
 	private static final int MY_AS = 1;
 	private static final float MY_ACHANCE = (float) 0.69;
 	private static final float MY_ABILITYCHANCE = (float) 0.20;
@@ -57,11 +57,4 @@ public class HeroCharacter extends DungeonCharacter {
 			}
 		}
 	}
-
-	@Override
-	void useItem(DungeonCharacter theTarget, Item theItem) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
