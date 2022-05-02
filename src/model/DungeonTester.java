@@ -3,8 +3,8 @@ package model;
 public class DungeonTester {
 	
 	public static void main(String[] theArgs) {
-		OverlordEnemy EnemyTester = new OverlordEnemy("Overlord");
-		HeroCharacter HeroTester = new HeroCharacter("Hero");
+		OverlordEnemy EnemyTester = new OverlordEnemy("Addison");
+		HeroCharacter HeroTester = new HeroCharacter("Benji");
 		
 		ItemPotion potion1 = new ItemPotion("pot1");
 		ItemPotion potion2 = new ItemPotion("pot2");

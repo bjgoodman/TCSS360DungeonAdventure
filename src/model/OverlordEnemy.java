@@ -65,7 +65,7 @@ public class OverlordEnemy extends DungeonCharacter {
 					System.out.println(this.getMyCharacterName() + "'s third swing missed!");
 				}
 			}
-			System.out.println(this.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+			System.out.println(theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 			if (theTarget.getMyCurrentHitPoints() <= ZERO) {
 				System.out.println(theTarget.getMyCharacterName() + " died!");
 				theTarget.setAlive(false);
