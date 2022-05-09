@@ -3,20 +3,30 @@ package model;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class DungeonCharacter {
-	public static final int ZERO = 0;
+	private static final int ZERO = 0;
+	private static final int ONE = 1;
+	
 	private String myCharacterName;
 	private String myCharacterDescription;
-	private String myAbilityName;
+	private String myCharacterType;
+	private String myAbility1;
+	private String myAbility2;
+	private boolean hasTwoAbilities;
 	private boolean myIsAlive;
 	private int myHitPointsMax;
 	private int myCurrentHitPoints;
 	private float myAttackSpeed;
+	private int myDefaultAttackDamageMax;
+	private int myDefaultAttackDamageMin;
 	private int myAttackDamageMax;
 	private int myAttackDamageMin;
 	private float myChanceToHit;
 	private float myAbilityChance;
 	private float myDefense;
+	private int myVisionRange;
 	private Item[] myInventory = new Item[6];
+	private Accessory[] myAccessories = new Accessory[4];
+	// questItem inventory
 	
 	public DungeonCharacter(final String theName) {
 		myCharacterName = theName;
@@ -31,12 +41,36 @@ public abstract class DungeonCharacter {
 		myCharacterName = theCharacterName;
 	}
 
-	public String getMyAbilityName() {
-		return myAbilityName;
+	public final String getMyCharacterType() {
+		return myCharacterType;
 	}
 
-	public void setMyAbilityName(final String theAbilityName) {
-		myAbilityName = theAbilityName;
+	public final void setMyCharacterType(String theCharacterType) {
+		myCharacterType = theCharacterType;
+	}
+
+	public String getMyAbility1() {
+		return myAbility1;
+	}
+
+	public void setMyAbility1(final String theAbility1) {
+		myAbility1 = theAbility1;
+	}
+	
+	public String getMyAbility2() {
+		return myAbility2;
+	}
+
+	public void setMyAbility2(final String theAbility2) {
+		myAbility2 = theAbility2;
+	}
+
+	public final boolean hasTwoAbilities() {
+		return hasTwoAbilities;
+	}
+
+	public final void setHasTwoAbilities(boolean theHasTwoAbilities) {
+		hasTwoAbilities = theHasTwoAbilities;
 	}
 
 	public boolean isAlive() {
@@ -47,11 +81,11 @@ public abstract class DungeonCharacter {
 		myIsAlive = theIsAlive;
 	}
 
-	public float getMyHitPoints() {
+	public int getMyHitPointsMax() {
 		return myHitPointsMax;
 	}
 
-	public void setMyHitPoints(final int theHitPointsMax) {
+	public void setMyHitPointsMax(final int theHitPointsMax) {
 		myHitPointsMax = theHitPointsMax;
 	}
 
@@ -60,7 +94,15 @@ public abstract class DungeonCharacter {
 	}
 
 	public void setMyCurrentHitPoints(final int theCurrentHitPoints) {
-		myCurrentHitPoints = theCurrentHitPoints;
+		if (theCurrentHitPoints >= this.getMyHitPointsMax()) {
+			myCurrentHitPoints = getMyHitPointsMax();
+		} else if (theCurrentHitPoints <= ZERO) {
+			myCurrentHitPoints = ZERO;
+			this.setAlive(false);
+			System.out.println(getMyCharacterName() + " died!");
+		} else {
+			myCurrentHitPoints = theCurrentHitPoints;
+		}
 	}
 
 	public float getMyAttackSpeed() {
@@ -85,6 +127,22 @@ public abstract class DungeonCharacter {
 
 	public void setMyAttackDamageMin(final int theAttackDamageMin) {
 		myAttackDamageMin = theAttackDamageMin;
+	}
+	
+	public int getMyDefaultAttackDamageMax() {
+		return myDefaultAttackDamageMax;
+	}
+
+	public void setMyDefaultAttackDamageMax(final int theDefaultAttackDamageMax) {
+		myDefaultAttackDamageMax = theDefaultAttackDamageMax;
+	}
+
+	public int getMyDefaultAttackDamageMin() {
+		return myDefaultAttackDamageMin;
+	}
+
+	public void setMyDefaultAttackDamageMin(final int theDefaultAttackDamageMin) {
+		myDefaultAttackDamageMin = theDefaultAttackDamageMin;
 	}
 
 	public float getMyChanceToHit() {
@@ -131,27 +189,49 @@ public abstract class DungeonCharacter {
 		myInventory = theInventory;
 	}
 
-	// MAGIC NUMBER
+	public Accessory[] getMyAccessories() {
+		return myAccessories;
+	}
+
+	public void setMyAccessories(Accessory[] theAccessories) {
+		myAccessories = theAccessories;
+	}
+
+	public final int getMyVisionRange() {
+		return myVisionRange;
+	}
+
+	public final void setMyVisionRange(int myVisionRange) {
+		this.myVisionRange = myVisionRange;
+	}
+
 	public int damageDealt() {
-		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + 1);
+		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + ONE);
 	}
 
 	public void Attack(DungeonCharacter theTarget) {
+		final int ONE = 1;
+		final int TWO = 2;
 		if (this.getMyAbilityChance() > ThreadLocalRandom.current().nextFloat()) {
-			this.useAbility(theTarget);
+			if (this.hasTwoAbilities()) {
+				int fiftyFifty = ThreadLocalRandom.current().nextInt(ONE, (TWO + ONE));
+				if (fiftyFifty == ONE) {
+					this.useAbility1(theTarget);
+				} else if (fiftyFifty == TWO) {
+					this.useAbility2(theTarget);
+				}
+			} else {
+				this.useAbility1(theTarget);
+			}
 		} else {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());
-				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 				System.out.println(this.getMyCharacterName() + " dealt " + damageDone 
 						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
 						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 			} else {
 				System.out.println(this.getMyCharacterName() + "'s attack missed!");
-			}
-			if (theTarget.getMyCurrentHitPoints() <= ZERO) {
-				System.out.println(theTarget.getMyCharacterName() + " died!");
-				theTarget.setAlive(false);
 			}
 		}
 	}
@@ -184,5 +264,6 @@ public abstract class DungeonCharacter {
 		return str;
 	}
 	
-	abstract void useAbility(final DungeonCharacter theTarget);
+	abstract void useAbility1(final DungeonCharacter theTarget);
+	abstract void useAbility2(final DungeonCharacter theTarget);
 }

@@ -42,7 +42,7 @@ public abstract class Item {
 	}
 
 	public void setMyTargetable(final boolean theTargetable) {
-		myReusable = theTargetable;
+		myTargetable = theTargetable;
 	}
 	
 }

@@ -3,12 +3,14 @@ package model;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class OverlordEnemy extends DungeonCharacter {
+	private static final int ZERO = 0;
 	
 	private static final String MY_DESCRIPTION = "The Overlord is a fierce and agile fighter, armed with"
 			+ " a deadly twinblade: a sword with blades on both sides of the hilt."
 			+ " She attacks with speed, accuracy, and impunity. Her special ability is to"
 			+ " spin her twinblade ferociously, attempting to inflict damage thrice.";
-	private static final String MY_ABILITY = "Threefold Slice";
+	private static final String MY_CHARACTER_TYPE = "Human";
+	private static final String MY_ABILITY1 = "Threefold Slice";
 	private static final int MY_AD_MAX = 28;
 	private static final int MY_AD_MIN = 21;
 	private static final int MY_AS = 1;
@@ -20,20 +22,24 @@ public class OverlordEnemy extends DungeonCharacter {
 	public OverlordEnemy(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
-		setMyAbilityName(MY_ABILITY);
+		setMyCharacterType(MY_CHARACTER_TYPE);
+		setMyAbility1(MY_ABILITY1);
+		setHasTwoAbilities(false);
 		setMyAttackDamageMax(MY_AD_MAX);
 		setMyAttackDamageMin(MY_AD_MIN);
+		setMyDefaultAttackDamageMax(MY_AD_MAX);
+		setMyDefaultAttackDamageMax(MY_AD_MIN);
 		setMyAttackSpeed(MY_AS);
 		setMyChanceToHit(MY_ACHANCE);
 		setMyAbilityChance(MY_ABILITYCHANCE);
 		setMyDefense(MY_DEF);
-		setMyHitPoints(MY_HP);
+		setMyHitPointsMax(MY_HP);
 		setMyCurrentHitPoints(MY_HP);
 	}
 
 	@Override
-	void useAbility(DungeonCharacter theTarget) {
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbilityName() + "!");
+	void useAbility1(DungeonCharacter theTarget) {
+		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "!");
 		this.threeFoldStrikeSwing(theTarget, 1);
 		this.threeFoldStrikeSwing(theTarget, 2);
 		this.threeFoldStrikeSwing(theTarget, 3);
@@ -66,10 +72,11 @@ public class OverlordEnemy extends DungeonCharacter {
 				}
 			}
 			System.out.println(theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
-			if (theTarget.getMyCurrentHitPoints() <= ZERO) {
-				System.out.println(theTarget.getMyCharacterName() + " died!");
-				theTarget.setAlive(false);
-			}
 		}
+	}
+
+	@Override
+	void useAbility2(DungeonCharacter theTarget) {
+		// DOES NOTHING BY DESIGN!
 	}
 }
