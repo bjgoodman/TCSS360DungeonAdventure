@@ -1,21 +1,27 @@
 package model;
 
 public class DungeonTester {
-	
+
 	public static void main(String[] theArgs) {
 		OverlordEnemy EnemyTester = new OverlordEnemy("Addison");
 		HeroCharacter HeroTester = new HeroCharacter("Benji");
-		
+		EnchantressCharacter EnchantressTester = new EnchantressCharacter("Celine");
+
 		ItemPotion potion1 = new ItemPotion("pot1");
 		ItemPotion potion2 = new ItemPotion("pot2");
 		ItemPotion potion3 = new ItemPotion("pot3");
-		
+		ItemPotion potion4 = new ItemPotion("pot4");
+
 		Item[] HeroTesterInventory = {potion1, potion2, potion3, null, null, null};
 		HeroTester.setMyInventory(HeroTesterInventory);
-		
-		combatTesterHelper(HeroTester, EnemyTester);
+
+		Item[] EnchantressTesterInventory = {potion1, potion2, potion3, potion4, null, null};
+		EnchantressTester.setMyInventory(EnchantressTesterInventory);
+
+		// combatTesterHelper(HeroTester, EnemyTester);
+		combatTesterHelper(EnchantressTester, EnemyTester);
 	}
-	
+
 	public static void combatTesterHelper(DungeonCharacter combatant1, DungeonCharacter combatant2) {
 		System.out.println(combatant1.inventoryToString());
 		while (combatant1.isAlive() && combatant2.isAlive()) {
