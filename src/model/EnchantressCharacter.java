@@ -43,7 +43,7 @@ public class EnchantressCharacter extends DungeonCharacter {
 
 	void useAbility1(DungeonCharacter theTarget) {
 		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "! "
-				+ this.getMyCharacterName() + "'s HP is now " + this.getMyCurrentHitPoints() + ".");
+				+ this.getMyCharacterName() + "'s HP is now " + ( this.getMyCurrentHitPoints() + MY_HP_RESTORE) + ".");
 		this.setMyCurrentHitPoints(this.getMyCurrentHitPoints() + MY_HP_RESTORE);
 	}
 

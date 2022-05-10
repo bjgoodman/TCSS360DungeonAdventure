@@ -24,6 +24,8 @@ public abstract class DungeonCharacter {
 	private float myAbilityChance;
 	private float myDefense;
 	private int myVisionRange;
+	private int myX;
+	private int myY;
 	private Item[] myInventory = new Item[6];
 	private Accessory[] myAccessories = new Accessory[4];
 	// questItem inventory
@@ -203,6 +205,22 @@ public abstract class DungeonCharacter {
 
 	public final void setMyVisionRange(int myVisionRange) {
 		this.myVisionRange = myVisionRange;
+	}
+
+	public int getMyX() {
+		return myX;
+	}
+
+	public void setMyX(int theX) {
+		myX = theX;
+	}
+
+	public int getMyY() {
+		return myY;
+	}
+
+	public void setMyY(int theY) {
+		myY = theY;
 	}
 
 	public int damageDealt() {

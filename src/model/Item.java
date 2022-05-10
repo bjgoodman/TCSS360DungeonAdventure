@@ -44,5 +44,4 @@ public abstract class Item {
 	public void setMyTargetable(final boolean theTargetable) {
 		myTargetable = theTargetable;
 	}
-	
 }
