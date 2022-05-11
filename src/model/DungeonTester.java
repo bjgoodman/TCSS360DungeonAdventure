@@ -4,15 +4,10 @@ public class DungeonTester {
 
 	public static void main(String[] theArgs) {
 		OverlordEnemy EnemyTester = new OverlordEnemy("Addison");
-<<<<<<< HEAD
-		HeroCharacter HeroTester = new HeroCharacter("Benji");
-		EnchantressCharacter EnchantressTester = new EnchantressCharacter("Celine");
-=======
 		SkeletonEnemy SkellyTester = new SkeletonEnemy("Skelly");
 		BarbarianCharacter HeroTester = new BarbarianCharacter("Benji");
 		EnchantressCharacter EnchantressTester = new EnchantressCharacter("Celine");
-		
->>>>>>> 9088d30a0677da8de45c551d7a57635e3001ef3e
+
 
 		ItemPotion potion1 = new ItemPotion("pot1");
 		ItemPotion potion2 = new ItemPotion("pot2");
@@ -25,12 +20,8 @@ public class DungeonTester {
 		Item[] EnchantressTesterInventory = {potion1, potion2, potion3, potion4, null, null};
 		EnchantressTester.setMyInventory(EnchantressTesterInventory);
 
-		// combatTesterHelper(HeroTester, EnemyTester);
-<<<<<<< HEAD
-		combatTesterHelper(EnchantressTester, EnemyTester);
-=======
+		combatTesterHelper(HeroTester, EnemyTester);
 		combatTesterHelper(EnchantressTester, SkellyTester);
->>>>>>> 9088d30a0677da8de45c551d7a57635e3001ef3e
 	}
 
 	public static void combatTesterHelper(DungeonCharacter combatant1, DungeonCharacter combatant2) {

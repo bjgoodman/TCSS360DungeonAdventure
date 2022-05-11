@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class DungeonCharacter {
 	private static final int ZERO = 0;
 	private static final int ONE = 1;
-	
+
 	private String myCharacterName;
 	private String myCharacterDescription;
 	private String myCharacterType;
@@ -27,12 +27,12 @@ public abstract class DungeonCharacter {
 	private Item[] myInventory = new Item[6];
 	private Accessory[] myAccessories = new Accessory[4];
 	// questItem inventory
-	
+
 	public DungeonCharacter(final String theName) {
 		myCharacterName = theName;
 		myIsAlive = true;
 	}
-	
+
 	public String getMyCharacterName() {
 		return myCharacterName;
 	}
@@ -56,7 +56,7 @@ public abstract class DungeonCharacter {
 	public void setMyAbility1(final String theAbility1) {
 		myAbility1 = theAbility1;
 	}
-	
+
 	public String getMyAbility2() {
 		return myAbility2;
 	}
@@ -128,7 +128,7 @@ public abstract class DungeonCharacter {
 	public void setMyAttackDamageMin(final int theAttackDamageMin) {
 		myAttackDamageMin = theAttackDamageMin;
 	}
-	
+
 	public int getMyDefaultAttackDamageMax() {
 		return myDefaultAttackDamageMax;
 	}
@@ -172,7 +172,7 @@ public abstract class DungeonCharacter {
 	public float getMyAttackReduction() {
 		return (1 - getMyDefense());
 	}
-	
+
 	public String getMyCharacterDescription() {
 		return myCharacterDescription;
 	}
@@ -235,7 +235,7 @@ public abstract class DungeonCharacter {
 			}
 		}
 	}
-	
+
 	public void useItemSelf(final int theItemSlot) {
 		Item item = getMyInventory()[theItemSlot];
 		item.itemEffectActivate(this);
@@ -243,7 +243,7 @@ public abstract class DungeonCharacter {
 			this.getMyInventory()[theItemSlot] = null;
 		}
 	}
-	
+
 	public void useItemTargeted(final int theItemSlot, final DungeonCharacter theTarget) {
 		Item item = getMyInventory()[theItemSlot];
 		if (item.isTargetable()) {
@@ -253,7 +253,7 @@ public abstract class DungeonCharacter {
 			this.getMyInventory()[theItemSlot] = null;
 		}
 	}
-	
+
 	public String inventoryToString() {
 		String str = getMyCharacterName() + "'s inventory: ";
 		for (Item item: getMyInventory()) {
@@ -263,7 +263,7 @@ public abstract class DungeonCharacter {
 		}
 		return str;
 	}
-	
+
 	abstract void useAbility1(final DungeonCharacter theTarget);
 	abstract void useAbility2(final DungeonCharacter theTarget);
 }

@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SkeletonEnemy extends DungeonCharacter {
 	private static final int ZERO = 0;
-	
+
 	private static final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that "
 			+ "has long lost its flesh, only consisting of bones and scraps of cloth. "
 			+ "It was doomed to walk the crypt forever... until now. His special ability "
@@ -18,7 +18,7 @@ public class SkeletonEnemy extends DungeonCharacter {
 	private static final float MY_ABILITYCHANCE = (float) 0.15;
 	private static final float MY_DEF = (float) 0.1;
 	private static final int MY_HP = 80;
-	
+
 	public SkeletonEnemy(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
@@ -46,7 +46,7 @@ public class SkeletonEnemy extends DungeonCharacter {
 		this.fiveFoldStrikeSwing(theTarget, 4);
 		this.fiveFoldStrikeSwing(theTarget, 5);
 	}
-	
+
 	// BAD CODE SMELL HERE?
 	private void fiveFoldStrikeSwing(DungeonCharacter theTarget, int strikeNumber) {
 		float fiveFoldModifier = (float) 0.3;
@@ -54,8 +54,8 @@ public class SkeletonEnemy extends DungeonCharacter {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round((damageDealt() * theTarget.getMyAttackReduction()) * fiveFoldModifier);
 				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-				String abilityText = (this.getMyCharacterName() + " dealt " + damageDone 
-						+ " to " + theTarget.getMyCharacterName() + ".");
+				String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
+						" to " + theTarget.getMyCharacterName() + ".");
 				if (strikeNumber == 1) {
 					abilityText += " One..!";
 				} else if (strikeNumber == 2) {

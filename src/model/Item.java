@@ -1,16 +1,16 @@
 package model;
 
 public abstract class Item {
-	
+
 	private String myItemName;
 	private int myItemSlot;
 	private boolean myReusable;
 	private boolean myTargetable;
-	
+
 	public Item(final String myItemName) {
 		setMyItemName(myItemName);
 	}
-	
+
 	public abstract void itemEffectActivate(DungeonCharacter theUser);
 
 	public String getMyItemName() {
@@ -36,7 +36,7 @@ public abstract class Item {
 	public void setMyReusable(final boolean theReusable) {
 		myReusable = theReusable;
 	}
-	
+
 	public boolean isTargetable() {
 		return myTargetable;
 	}
@@ -44,5 +44,5 @@ public abstract class Item {
 	public void setMyTargetable(final boolean theTargetable) {
 		myTargetable = theTargetable;
 	}
-	
+
 }

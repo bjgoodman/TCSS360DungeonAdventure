@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class BarbarianCharacter extends DungeonCharacter {
 	private static final int ZERO = 0;
-	
+
 	private static final String MY_DESCRIPTION = "The Barbarian is a fierce warrior, honed in"
 			+ " the art of the blade. He carries a claymore, a greatsword he wields with"
 			+ " both hands. His first ability is a great swing that attempts to cleave"
@@ -20,7 +20,7 @@ public class BarbarianCharacter extends DungeonCharacter {
 	private static final float MY_ABILITYCHANCE = (float) 0.20;
 	private static final float MY_DEF = (float) 0.4;
 	private static final int MY_HP = 175;
-	
+
 	public BarbarianCharacter(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
@@ -44,9 +44,9 @@ public class BarbarianCharacter extends DungeonCharacter {
 	void useAbility1(DungeonCharacter theTarget) {
 		final int SWING_MULTIPLIER = 2;
 		final float SWING_DEBUFF = (float) 0.8;
-		
+
 		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "!");
-		
+
 		if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 			int damageDone = SWING_MULTIPLIER * (Math.round(damageDealt() * theTarget.getMyAttackReduction()));
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
@@ -54,7 +54,7 @@ public class BarbarianCharacter extends DungeonCharacter {
 			String abilityText = (this.getMyCharacterName() + " dealt " + damageDone 
 					+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName() 
 					+ "'s defense dropped to " + Math.round(theTarget.getMyDefense() * 100) + "%.");
-			
+
 			System.out.println(abilityText);
 		} else {
 			System.out.println(this.getMyCharacterName() + "'s " + getMyAbility1() + " missed!");
