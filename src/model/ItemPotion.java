@@ -19,6 +19,6 @@ public class ItemPotion extends Item {
 	
 	private int potionValue(DungeonCharacter theUser) {
 		return (int) Math.round(FIFTY_PERCENT * 
-				(Math.floor(theUser.getMyHitPoints() - theUser.getMyCurrentHitPoints()))); 
+				(Math.floor(theUser.getMyHitPointsMax() - theUser.getMyCurrentHitPoints()))); 
 	}
 }
