@@ -4,7 +4,6 @@ public abstract class Item {
 
 	private String myItemName;
 	private int myItemSlot;
-	private boolean myReusable;
 	private boolean myTargetable;
 
 	public Item(final String myItemName) {
@@ -28,6 +27,7 @@ public abstract class Item {
 	public void setMyItemSlot(final int theItemSlot) {
 		myItemSlot = theItemSlot;
 	}
+<<<<<<< HEAD
 
 	public boolean isReusable() {
 		return myReusable;
@@ -37,6 +37,9 @@ public abstract class Item {
 		myReusable = theReusable;
 	}
 
+=======
+	
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263
 	public boolean isTargetable() {
 		return myTargetable;
 	}
@@ -44,5 +47,8 @@ public abstract class Item {
 	public void setMyTargetable(final boolean theTargetable) {
 		myTargetable = theTargetable;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263
 }

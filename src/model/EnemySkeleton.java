@@ -2,7 +2,7 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class SkeletonEnemy extends DungeonCharacter {
+public class EnemySkeleton extends DungeonCharacter {
 	private static final int ZERO = 0;
 
 	private static final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that "
@@ -18,8 +18,13 @@ public class SkeletonEnemy extends DungeonCharacter {
 	private static final float MY_ABILITYCHANCE = (float) 0.15;
 	private static final float MY_DEF = (float) 0.1;
 	private static final int MY_HP = 80;
+<<<<<<< HEAD:src/model/SkeletonEnemy.java
 
 	public SkeletonEnemy(String theName) {
+=======
+	
+	public EnemySkeleton(String theName) {
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/EnemySkeleton.java
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);

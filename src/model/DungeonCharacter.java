@@ -24,6 +24,8 @@ public abstract class DungeonCharacter {
 	private float myAbilityChance;
 	private float myDefense;
 	private int myVisionRange;
+	private int myX;
+	private int myY;
 	private Item[] myInventory = new Item[6];
 	private Accessory[] myAccessories = new Accessory[4];
 	// questItem inventory
@@ -99,7 +101,6 @@ public abstract class DungeonCharacter {
 		} else if (theCurrentHitPoints <= ZERO) {
 			myCurrentHitPoints = ZERO;
 			this.setAlive(false);
-			System.out.println(getMyCharacterName() + " died!");
 		} else {
 			myCurrentHitPoints = theCurrentHitPoints;
 		}
@@ -205,6 +206,22 @@ public abstract class DungeonCharacter {
 		this.myVisionRange = myVisionRange;
 	}
 
+	public int getMyX() {
+		return myX;
+	}
+
+	public void setMyX(int theX) {
+		myX = theX;
+	}
+
+	public int getMyY() {
+		return myY;
+	}
+
+	public void setMyY(int theY) {
+		myY = theY;
+	}
+
 	public int damageDealt() {
 		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + ONE);
 	}
@@ -226,22 +243,23 @@ public abstract class DungeonCharacter {
 		} else {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());
+				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 				System.out.println(this.getMyCharacterName() + " dealt " + damageDone 
 						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
 						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
-				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 			} else {
 				System.out.println(this.getMyCharacterName() + "'s attack missed!");
 			}
+		}
+		if (!theTarget.isAlive()) {
+			System.out.println(theTarget.getMyCharacterName() + " died!");
 		}
 	}
 
 	public void useItemSelf(final int theItemSlot) {
 		Item item = getMyInventory()[theItemSlot];
 		item.itemEffectActivate(this);
-		if (!(item.isReusable())) {
-			this.getMyInventory()[theItemSlot] = null;
-		}
+		this.getMyInventory()[theItemSlot] = null;
 	}
 
 	public void useItemTargeted(final int theItemSlot, final DungeonCharacter theTarget) {
@@ -249,9 +267,7 @@ public abstract class DungeonCharacter {
 		if (item.isTargetable()) {
 			item.itemEffectActivate(theTarget);
 		}
-		if (!(item.isReusable())) {
-			this.getMyInventory()[theItemSlot] = null;
-		}
+		this.getMyInventory()[theItemSlot] = null;
 	}
 
 	public String inventoryToString() {

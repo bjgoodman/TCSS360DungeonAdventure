@@ -1,14 +1,23 @@
 package model;
 // import java.util.concurrent.ThreadLocalRandom;
+<<<<<<< HEAD:src/model/EnchantressCharacter.java
 public class EnchantressCharacter extends DungeonCharacter {
 	private static final int MY_HP_RESTORE = 50;
 	private static final int MY_ABILITY2_DAMAGE = 34;
 
 	private static final String MY_DESCRIPTION = "The Enchantress is magical goddess, the descent of a line " +
+=======
+
+public class CharacterEnchantress extends DungeonCharacter {
+	private static final int MY_HP_RESTORE = 50;
+	private static final int MY_ABILITY2_DAMAGE = 25;
+	
+	private static final String MY_DESCRIPTION = "The holy enchantress, descent of a line " +
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/CharacterEnchantress.java
 			"of priests to the king. She imbues her hands with magic to summon " +
 			"powerful spells, vanquishing those who oppose her. Her first special " + 
-			"ability is heal herself when in danger. Her second special ability is " +
-			"a powerful explosion of holy magic that vapourises undead enemies.";
+			"ability is to heal herself when in danger. Her second special ability is " +
+			"a powerful explosion of holy magic that does major damage and vapourises undead enemies.";
 	private static final String MY_CHARACTER_TYPE = "Human";
 	private static final String MY_ABILITY1 = "Revitalise";
 	private static final String MY_ABILITY2 = "Wrath of God";
@@ -19,8 +28,13 @@ public class EnchantressCharacter extends DungeonCharacter {
 	private static final float MY_ABILITYCHANCE = (float) 0.2;
 	private static final float MY_DEF = (float) 0.3;
 	private static final int MY_HP = 100;
+<<<<<<< HEAD:src/model/EnchantressCharacter.java
 	
 	public EnchantressCharacter(String theName) {
+=======
+
+	public CharacterEnchantress(String theName) {
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/CharacterEnchantress.java
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);
@@ -40,26 +54,31 @@ public class EnchantressCharacter extends DungeonCharacter {
 	}
 
 	void useAbility1(DungeonCharacter theTarget) {
+<<<<<<< HEAD:src/model/EnchantressCharacter.java
 		System.out.println(this.getMyCharacterName() + " used " +
 				this.getMyAbility1() + "! " + this.getMyCharacterName() +
 				"'s HP is now " + this.getMyCurrentHitPoints() + ".");
 		System.out.println(this.getMyCharacterName() + "'s HP is now " +
 				(this.getMyCurrentHitPoints() + MY_HP_RESTORE) + ".");
 
+=======
+>>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/CharacterEnchantress.java
 		this.setMyCurrentHitPoints(this.getMyCurrentHitPoints() + MY_HP_RESTORE);
+		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "! "
+				+ this.getMyCharacterName() + "'s HP is now " + (this.getMyCurrentHitPoints()) + ".");
 	}
 
 	void useAbility2(DungeonCharacter theTarget) {
 		final int TWO = 2;
 
 		if (theTarget.getMyCharacterType() == "Undead") {
-			System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + " on an Undead enemy! Critical damage! "
-					+ theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - (MY_ABILITY2_DAMAGE * TWO));
-		} else {
-			System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + "! "
+			System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + " on an Undead enemy! Critical damage: " + (MY_ABILITY2_DAMAGE * TWO) + ". "
 					+ theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+		} else {
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY2_DAMAGE);
+			System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + "! Damage: " + (MY_ABILITY2_DAMAGE * TWO) + ". "
+					+ theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 		}
 	}
 }

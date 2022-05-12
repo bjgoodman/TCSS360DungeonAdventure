@@ -5,7 +5,6 @@ public class ItemPotion extends Item {
 
 	public ItemPotion(String myItemName) {
 		super(myItemName);
-		setMyReusable(false);
 		setMyTargetable(false);
 	}
 
