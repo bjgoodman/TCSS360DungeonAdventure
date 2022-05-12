@@ -2,7 +2,7 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BarbarianCharacter extends DungeonCharacter {
+public class CharacterBarbarian extends DungeonCharacter {
 	private static final int ZERO = 0;
 	
 	private static final String MY_DESCRIPTION = "The Barbarian is a fierce warrior, honed in"
@@ -21,7 +21,7 @@ public class BarbarianCharacter extends DungeonCharacter {
 	private static final float MY_DEF = (float) 0.4;
 	private static final int MY_HP = 175;
 	
-	public BarbarianCharacter(String theName) {
+	public CharacterBarbarian(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);

@@ -2,7 +2,7 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class OverlordEnemy extends DungeonCharacter {
+public class EnemyOverlord extends DungeonCharacter {
 	private static final int ZERO = 0;
 	
 	private static final String MY_DESCRIPTION = "The Overlord is a fierce and agile fighter, armed with"
@@ -19,7 +19,7 @@ public class OverlordEnemy extends DungeonCharacter {
 	private static final float MY_DEF = (float) 0.35;
 	private static final int MY_HP = 150;
 	
-	public OverlordEnemy(String theName) {
+	public EnemyOverlord(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);

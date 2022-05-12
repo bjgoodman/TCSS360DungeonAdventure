@@ -2,6 +2,8 @@ package model;
 
 public class QuestItemEncapsulation extends QuestItem {
 	
+	private String MY_DESCRIPTION = "PLACEHOLDER";
+	
 	public QuestItemEncapsulation(String theItemName) {
 		super(theItemName);
 	}
