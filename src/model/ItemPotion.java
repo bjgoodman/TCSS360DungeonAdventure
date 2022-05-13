@@ -12,8 +12,9 @@ public class ItemPotion extends Item {
 	public void itemEffectActivate(DungeonCharacter theUser) {
 		int potionVal = potionValue(theUser);
 		theUser.setMyCurrentHitPoints(theUser.getMyCurrentHitPoints() + potionVal);
-		System.out.println(theUser.getMyCharacterName() + " restored " + potionVal + " HP. " 
-				+ theUser.getMyCharacterName() + "'s HP is now " + theUser.getMyCurrentHitPoints() + ".");
+		System.out.println(theUser.getMyCharacterName() + " restored " + potionVal +
+				" HP. " + theUser.getMyCharacterName() + "'s HP is now " +
+				theUser.getMyCurrentHitPoints() + ".");
 	}
 
 	private int potionValue(DungeonCharacter theUser) {

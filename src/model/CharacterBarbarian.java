@@ -17,16 +17,11 @@ public class CharacterBarbarian extends DungeonCharacter {
 	private static final int MY_AD_MIN = 19;
 	private static final int MY_AS = 1;
 	private static final float MY_ACHANCE = (float) 0.69;
-	private static final float MY_ABILITYCHANCE = (float) 0.20;
+	private static final float MY_ABILITYCHANCE = (float) 0.2;
 	private static final float MY_DEF = (float) 0.4;
 	private static final int MY_HP = 175;
-<<<<<<< HEAD:src/model/BarbarianCharacter.java
 
-	public BarbarianCharacter(String theName) {
-=======
-	
 	public CharacterBarbarian(String theName) {
->>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/CharacterBarbarian.java
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);
@@ -56,9 +51,9 @@ public class CharacterBarbarian extends DungeonCharacter {
 			int damageDone = SWING_MULTIPLIER * (Math.round(damageDealt() * theTarget.getMyAttackReduction()));
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
 			theTarget.setMyDefense(theTarget.getMyDefense() * SWING_DEBUFF);
-			String abilityText = (this.getMyCharacterName() + " dealt " + damageDone 
-					+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName() 
-					+ "'s defense dropped to " + Math.round(theTarget.getMyDefense() * 100) + "%.");
+			String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
+					" to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName() +
+					"'s defense dropped to " + Math.round(theTarget.getMyDefense() * 100) + "%.");
 
 			System.out.println(abilityText);
 		} else {
@@ -67,6 +62,6 @@ public class CharacterBarbarian extends DungeonCharacter {
 	}
 
 	void useAbility2(DungeonCharacter theTarget) {
-		// enrage goes here
+		// enrage ability goes here
 	}
 }

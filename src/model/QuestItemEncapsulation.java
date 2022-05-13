@@ -1,9 +1,9 @@
 package model;
 
 public class QuestItemEncapsulation extends QuestItem {
-	
+
 	private String MY_DESCRIPTION = "PLACEHOLDER";
-	
+
 	public QuestItemEncapsulation(String theItemName) {
 		super(theItemName);
 	}
@@ -14,8 +14,8 @@ public class QuestItemEncapsulation extends QuestItem {
 		float DEFENSE_MODIFIER = (float) 1.2;
 		float PERCENT = 100;
 		theUser.setMyDefense(theUser.getMyDefense() * DEFENSE_MODIFIER);
-		System.out.println(theUser.getMyCharacterName() + "'s defense was raised by " + ((DEFENSE_MODIFIER - DEFENSE) * PERCENT) +
-				" %!");
+		System.out.println(theUser.getMyCharacterName() + "'s defense was raised by " +
+				((DEFENSE_MODIFIER - DEFENSE) * PERCENT) + " %!");
 	}
 
 }

@@ -202,8 +202,8 @@ public abstract class DungeonCharacter {
 		return myVisionRange;
 	}
 
-	public final void setMyVisionRange(int myVisionRange) {
-		this.myVisionRange = myVisionRange;
+	public final void setMyVisionRange(int theVisionRange) {
+		myVisionRange = theVisionRange;
 	}
 
 	public int getMyX() {

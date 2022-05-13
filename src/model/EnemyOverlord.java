@@ -18,13 +18,8 @@ public class EnemyOverlord extends DungeonCharacter {
 	private static final float MY_ABILITYCHANCE = (float) 0.12;
 	private static final float MY_DEF = (float) 0.35;
 	private static final int MY_HP = 150;
-<<<<<<< HEAD:src/model/OverlordEnemy.java
 
-	public OverlordEnemy(String theName) {
-=======
-	
 	public EnemyOverlord(String theName) {
->>>>>>> b388b10901aa870a7d26802dee4e390c69671263:src/model/EnemyOverlord.java
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
 		setMyCharacterType(MY_CHARACTER_TYPE);
