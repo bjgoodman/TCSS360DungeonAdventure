@@ -5,11 +5,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CharacterBarbarian extends DungeonCharacter {
 	private static final int ZERO = 0;
 
-	private static final String MY_DESCRIPTION = "The Barbarian is a fierce warrior, honed in"
-			+ " the art of the blade. He carries a claymore, a greatsword he wields with"
-			+ " both hands. His first ability is a great swing that attempts to cleave"
-			+ " his enemies limbs off, lowering their ability to defend themself. His second"
-			+ " ability is enrage, which raises his damage until the end of combat.";
+	private static final String MY_DESCRIPTION = "The Barbarian is a fierce warrior, honed in" +
+			" the art of the blade. He carries a claymore, a greatsword he wields with" +
+			" both hands. His first ability is a great swing that attempts to cleave" +
+			" his enemies limbs off, lowering their ability to defend themself. His second" +
+			" ability is enrage, which raises his damage until the end of combat.";
 	private static final String MY_CHARACTER_TYPE = "Human";
 	private static final String MY_ABILITY1 = "Dismembering Swing";
 	private static final String MY_ABILITY2 = "Enrage";
@@ -63,5 +63,6 @@ public class CharacterBarbarian extends DungeonCharacter {
 
 	void useAbility2(DungeonCharacter theTarget) {
 		// enrage ability goes here
+		// have to figure out a limit to buff its DMG power in a battle later
 	}
 }

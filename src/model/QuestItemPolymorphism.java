@@ -1,5 +1,5 @@
 package model;
 
-public class QuestItemPolymorphism {
+public class QuestItemPolymorphism { // character buff to obtain enemies/bosses abilities.
 
 }

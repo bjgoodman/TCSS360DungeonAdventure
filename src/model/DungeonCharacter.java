@@ -95,7 +95,7 @@ public abstract class DungeonCharacter {
 		return myCurrentHitPoints;
 	}
 
-	public void setMyCurrentHitPoints(final int theCurrentHitPoints) {
+	public void setMyCurrentHitPoints(final int theCurrentHitPoints) { // set exception by Ben??
 		if (theCurrentHitPoints >= this.getMyHitPointsMax()) {
 			myCurrentHitPoints = getMyHitPointsMax();
 		} else if (theCurrentHitPoints <= ZERO) {
@@ -243,6 +243,9 @@ public abstract class DungeonCharacter {
 		} else {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());
+				// needs to be fixed? characters ATK DMG differs from their min & max ATK PWR
+				// System.out.println(damageDealt());
+				// System.out.println(theTarget.getMyAttackReduction());
 				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
 				System.out.println(this.getMyCharacterName() + " dealt " + damageDone 
 						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()

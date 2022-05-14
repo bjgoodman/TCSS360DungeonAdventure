@@ -2,15 +2,21 @@ package model;
 
 public class EnemyGoblin extends DungeonCharacter {
 
-	private static final String MY_DESCRIPTION = "";
-	private static final String MY_CHARACTER_TYPE = ""; // might change name of enemy and type too
-	private static final String MY_ABILITY1 = ""; // will come back and figure ability out
-	private static final String MY_ABILITY2 = ""; // will come back and figure ability out
+	private static final int MY_ABILITY1_DAMAGE = 14;
+	private static final int MY_ABILITY2_DAMAGE = 17;
+	private static final String MY_DESCRIPTION = "Born into the abyss of the willow forest lies a maleficent  " +
+			"creature. Found a scythe as a child and trained daily. There is no ordeal that he cannot cut his way " +
+			"through. Her first ability is to slash the air with rapid speed towards opponent damaging them. Her " +
+			"second ability is to grip her scythe and spin uncontrollably causing the enemy to be sucked into her " +
+			"cyclone of horrifying cuts.";
+	private static final String MY_CHARACTER_TYPE = "Eldritch";
+	private static final String MY_ABILITY1 = "Air slash"; // diff name?
+	private static final String MY_ABILITY2 = "Cyclone"; // spins with scythe in a circle bringing the enemy closer to get slashed
 	private static final int MY_AD_MAX = 19;
 	private static final int MY_AD_MIN = 11;
-	private static final int MY_AS = 1;
-	private static final float MY_ACHANCE = (float) 0.8;
-	private static final float MY_ABILITYCHANCE = (float) 0.14;
+	private static final int MY_AS = 2; // have more speed
+	private static final float MY_ACHANCE = (float) 0.75;
+	private static final float MY_ABILITYCHANCE = (float) 0.16;
 	private static final float MY_DEF = (float) 0.17;
 	private static final int MY_HP = 98;
 
@@ -35,14 +41,18 @@ public class EnemyGoblin extends DungeonCharacter {
 
 	@Override
 	void useAbility1(DungeonCharacter theTarget) {
-		// TODO Auto-generated method stub
-
+		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY1_DAMAGE);
+		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "! Damage: " +
+				(MY_ABILITY1_DAMAGE) + ". " +
+				theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 	}
 
 	@Override
 	void useAbility2(DungeonCharacter theTarget) {
-		// TODO Auto-generated method stub
-
+		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY2_DAMAGE);
+		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + "! Damage: " +
+				(MY_ABILITY2_DAMAGE) + ". " +
+				theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 	}
 
 }

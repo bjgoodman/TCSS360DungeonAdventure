@@ -63,8 +63,8 @@ public class CharacterEnchantress extends DungeonCharacter {
 		} else {
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY2_DAMAGE);
 			System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility2() + "! Damage: " +
-					(MY_ABILITY2_DAMAGE) + ". " + theTarget.getMyCharacterName() +
-					"'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+					(MY_ABILITY2_DAMAGE) + ". " +
+					theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 		}
 	}
 

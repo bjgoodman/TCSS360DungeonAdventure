@@ -1,6 +1,6 @@
 package model;
 
-public class CharacterThief extends DungeonCharacter{
+public class CharacterThief extends DungeonCharacter { // might change name to ASSASSIN
 
 	//fields
 	private static final String MY_DESCRIPTION = "The thief stalks through the night of its prey ...";

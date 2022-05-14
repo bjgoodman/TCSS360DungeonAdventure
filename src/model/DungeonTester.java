@@ -3,11 +3,17 @@ package model;
 public class DungeonTester {
 
 	public static void main(String[] theArgs) {
-		EnemyOverlord EnemyTester = new EnemyOverlord("Addison");
 		EnemySkeleton SkellyTester = new EnemySkeleton("Skelly");
+		EnemyCultist cultistTester = new EnemyCultist("Raymond");
+		EnemyGoblin goblinTester = new EnemyGoblin("Pandora");
+
+		// EnemyEldritchGod eldritchGodTester = EnemyEldritchGod("Malice");
+		EnemyOverlord EnemyTester = new EnemyOverlord("Addison");
+
+
 		CharacterBarbarian HeroTester = new CharacterBarbarian("Benji");
 		CharacterEnchantress EnchantressTester = new CharacterEnchantress("Celine");
-		
+
 		ItemPotion potion1 = new ItemPotion("pot1");
 		ItemPotion potion2 = new ItemPotion("pot2");
 		ItemPotion potion3 = new ItemPotion("pot3");
@@ -18,10 +24,17 @@ public class DungeonTester {
 
 		Item[] EnchantressTesterInventory = {potion1, potion2, potion3, potion4, null, null};
 		EnchantressTester.setMyInventory(EnchantressTesterInventory);
-		
+
 		// note: use if statements for controller code when user selects character for game
-//		combatTesterHelper(HeroTester, EnemyTester);
-		combatTesterHelper(EnchantressTester, SkellyTester);
+		//		combatTesterHelper(HeroTester, EnemyTester);
+		//		combatTesterHelper(HeroTester, SkellyTester);
+		//		combatTesterHelper(HeroTester, cultistTester);
+		//		combatTesterHelper(HeroTester, goblinTester);
+
+		//		combatTesterHelper(EnchantressTester, EnemyTester);
+		//		combatTesterHelper(EnchantressTester, SkellyTester);
+		//		combatTesterHelper(EnchantressTester, cultistTester);
+		combatTesterHelper(EnchantressTester, goblinTester);
 	}
 
 	public static void combatTesterHelper(DungeonCharacter combatant1, DungeonCharacter combatant2) {

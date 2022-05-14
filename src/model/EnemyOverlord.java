@@ -15,7 +15,7 @@ public class EnemyOverlord extends DungeonCharacter {
 	private static final int MY_AD_MIN = 21;
 	private static final int MY_AS = 1;
 	private static final float MY_ACHANCE = (float) 0.8;
-	private static final float MY_ABILITYCHANCE = (float) 0.12;
+	private static final float MY_ABILITYCHANCE = (float) 0.21;
 	private static final float MY_DEF = (float) 0.35;
 	private static final int MY_HP = 150;
 
@@ -48,7 +48,7 @@ public class EnemyOverlord extends DungeonCharacter {
 	// BAD CODE SMELL HERE?
 	private void threeFoldStrikeSwing(DungeonCharacter theTarget, int strikeNumber) {
 		float threefoldModifier = (float) 0.9;
-		if (theTarget.isAlive() ) {
+		if (theTarget.isAlive()) {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round((damageDealt() * theTarget.getMyAttackReduction()) * threefoldModifier);
 				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
