@@ -5,7 +5,7 @@ public class EnemyOgreWarchief extends DungeonCharacter {
 	private static final int MY_ABILITY1_DAMAGE = 34;
 	private static final String MY_DESCRIPTION = "";
 	private static final String MY_CHARACTER_TYPE = "Ogre";
-	private static final String MY_ABILITY1 = "Hammer Down"; // will come back and figure ability out
+	private static final String MY_ABILITY1 = "Full Throttle Smash"; // will come back and figure ability out
 	private static final int MY_AD_MAX = 26;
 	private static final int MY_AD_MIN = 19;
 	private static final int MY_AS = 1;

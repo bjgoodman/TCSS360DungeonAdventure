@@ -10,7 +10,7 @@ public class EnemyGoblin extends DungeonCharacter {
 			"second ability is to grip her scythe and spin uncontrollably causing the enemy to be sucked into her " +
 			"cyclone of horrifying cuts.";
 	private static final String MY_CHARACTER_TYPE = "Eldritch";
-	private static final String MY_ABILITY1 = "Air slash"; // diff name?
+	private static final String MY_ABILITY1 = "Sonic Slash";
 	private static final String MY_ABILITY2 = "Cyclone"; // spins with scythe in a circle bringing the enemy closer to get slashed
 	private static final int MY_AD_MAX = 19;
 	private static final int MY_AD_MIN = 11;

@@ -7,7 +7,7 @@ public class DungeonTester {
 		EnemyCultist cultistTester = new EnemyCultist("Raymond");
 		EnemyGoblin goblinTester = new EnemyGoblin("Pandora");
 
-		// EnemyEldritchGod eldritchGodTester = EnemyEldritchGod("Malice");
+		// EnemyEldritchGod eldritchGodTester = EnemyEldritchGod("Malice"); 
 		EnemyOverlord EnemyTester = new EnemyOverlord("Addison");
 
 
