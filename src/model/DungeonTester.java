@@ -1,7 +1,24 @@
+/* DungeonTester.java */
+
 package model;
 
+/**
+ * The start of Dungeon Adventure with characters having an amount of
+ * potions and facing their enemies.
+ * 
+ * @author Ben Goodman, Chris Nichol, Komisi Petelo
+ * @version 05/19/2022
+ */
 public class DungeonTester {
 
+	/**
+	 * Calling characters (adventurers && enemies) classes and items classes
+	 * and setting a certain amount of potions for each adventurer for the
+	 * users in the game. Then, we call another method to test our combating
+	 * with each character.
+	 * 
+	 * @param args - the command line arguments (ignored for now).
+	 */
 	public static void main(String[] theArgs) {
 		EnemySkeleton SkellyTester = new EnemySkeleton("Skelly");
 		EnemyCultist cultistTester = new EnemyCultist("Raymond");
@@ -37,24 +54,31 @@ public class DungeonTester {
 		combatTesterHelper(EnchantressTester, goblinTester);
 	}
 
-	public static void combatTesterHelper(DungeonCharacter combatant1, DungeonCharacter combatant2) {
-		System.out.println(combatant1.inventoryToString());
-		while (combatant1.isAlive() && combatant2.isAlive()) {
-			if (combatant1.isAlive()) {
-				combatant1.Attack(combatant2);
+	/**
+	 * Tests our combating situations with our characters; adventurers versus
+	 * their enemies while having an inventory of potions.
+	 * 
+	 * @param thetheCombatant1 the first person to fight
+	 * @param theCombatant2 the second person to fight
+	 */
+	public static void combatTesterHelper(DungeonCharacter theCombatant1, DungeonCharacter theCombatant2) {
+		System.out.println(theCombatant1.inventoryToString());
+		while (theCombatant1.isAlive() && theCombatant2.isAlive()) {
+			if (theCombatant1.isAlive()) {
+				theCombatant1.Attack(theCombatant2);
 			}
-			if (combatant2.isAlive()) {
-				combatant2.Attack(combatant1);
+			if (theCombatant2.isAlive()) {
+				theCombatant2.Attack(theCombatant1);
 			}
-			if (combatant1.getMyCurrentHitPoints() < 80) {
+			if (theCombatant1.getMyCurrentHitPoints() < 80) {
 				for (int i = 0; i < 5; i++) {
-					if (combatant1.getMyInventory()[i] != null) {
-						combatant1.useItemSelf(i);
+					if (theCombatant1.getMyInventory()[i] != null) {
+						theCombatant1.useItemSelf(i);
 						break;
 					}
 				}
 			}
 		}
-		System.out.println(combatant1.inventoryToString());
+		System.out.println(theCombatant1.inventoryToString());
 	}
 }

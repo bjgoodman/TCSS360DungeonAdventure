@@ -47,7 +47,7 @@ public class DungeonAdventureGUI extends JPanel {
     /**
      * Creates a new button.
      * 
-     * @param buttonName the name overlayed on the button
+     * @param buttonName the name overlaid on the button
      * @return returns the newly created button
      */
     private JButton createButton(final String buttonName) {

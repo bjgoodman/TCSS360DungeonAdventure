@@ -1,24 +1,56 @@
+/* EnemySkeleton.java */
+
 package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The stats and abilities of the skeleton character within
+ * Dungeon Adventure.
+ * 
+ * @author Ben Goodman, Chris Nichol, Komisi Petelo
+ * @version 05/20/2022
+ */
 public class EnemySkeleton extends DungeonCharacter {
-	private static final int ZERO = 0;
 
+	/** description for the skeleton */
 	private static final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that " +
 			"has long lost its flesh, only consisting of bones and scraps of cloth. " +
 			"It was doomed to walk the crypt forever... until now. His special ability " +
 			"is to rush the opponent down, attempting to inflict 5 instances of pitiful damage.";
+
+	/**  the skeleton's character type */
 	private static final String MY_CHARACTER_TYPE = "Undead";
+
+	/**  the skeleton's first ability */
 	private static final String MY_ABILITY1 = "Rickety Rushdown";
+
+	/**  the skeleton's maximum attack power */
 	private static final int MY_AD_MAX = 18;
+
+	/**  the skeleton's minimum attack power */
 	private static final int MY_AD_MIN = 9;
+
+	/**  the skeleton's attack speed */
 	private static final int MY_AS = 1;
+
+	/**  the skeleton's chances of attacking enemies */
 	private static final float MY_ACHANCE = (float) 0.7;
+
+	/**  the skeleton's chances of his abilities activating */
 	private static final float MY_ABILITYCHANCE = (float) 0.15;
+
+	/**  the skeleton's defense */
 	private static final float MY_DEF = (float) 0.1;
+
+	/**  the skeleton's total hit points */
 	private static final int MY_HP = 80;
 
+	/**
+	 * Solidifies the skeleton's stats within the game
+	 * 
+	 * @param theName the name of the skeleton character
+	 */
 	public EnemySkeleton(String theName) {
 		super(theName);
 		setMyCharacterDescription(MY_DESCRIPTION);
@@ -28,7 +60,7 @@ public class EnemySkeleton extends DungeonCharacter {
 		setMyAttackDamageMax(MY_AD_MAX);
 		setMyAttackDamageMin(MY_AD_MIN);
 		setMyDefaultAttackDamageMax(MY_AD_MAX);
-		setMyDefaultAttackDamageMax(MY_AD_MIN);
+		setMyDefaultAttackDamageMin(MY_AD_MIN);
 		setMyAttackSpeed(MY_AS);
 		setMyChanceToHit(MY_ACHANCE);
 		setMyAbilityChance(MY_ABILITYCHANCE);
@@ -37,6 +69,11 @@ public class EnemySkeleton extends DungeonCharacter {
 		setMyCurrentHitPoints(MY_HP);
 	}
 
+	/**
+	 * the skeleton's first ability is to rush down their opponent up to 5 times.
+	 * 
+	 * @param theTarget the current opponent that the skeleton character is facing
+	 */
 	@Override
 	void useAbility1(DungeonCharacter theTarget) {
 		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility1() + "!");
@@ -47,7 +84,13 @@ public class EnemySkeleton extends DungeonCharacter {
 		this.fiveFoldRushdown(theTarget, 5);
 	}
 
-	// BAD CODE SMELL HERE?
+	/**
+	 * calculating the number of rush downs being dealt to the skeleton opponent
+	 * whether the rush downs landed or missed.
+	 * 
+	 * @param theTarget the current opponent that the skeleton character is facing
+	 * @param theStrikeNumber the number of rush downs that the skeleton dealt to the opponent
+	 */
 	private void fiveFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
 		float fiveFoldModifier = (float) 0.3;
 		if (theTarget.isAlive()) {
