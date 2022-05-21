@@ -1,3 +1,5 @@
+/* QuestItemAbstraction.java */
+
 package model;
 
 /**
@@ -13,10 +15,21 @@ public class QuestItemAbstraction extends QuestItem {
 	private String MY_DESCRIPTION = "Obtaining this jewel can boost a character's attack."
 			+ "attack power.";
 
+	/**
+	 * Solidifies the name of the quest item
+	 * 
+	 * @param theItemName the name of the item
+	 */
 	public QuestItemAbstraction(String theItemName) {
 		super(theItemName);
 	}
 
+
+	/**
+	 * item will activate to boost the character's attack performance
+	 * 
+	 * @param theUser the character that the user selected for the game
+	 */
 	@Override
 	public void itemEffectActivate(DungeonCharacter theUser) {
 		float ATTACK = 1;

@@ -1,3 +1,5 @@
+/* QuestItemEncapsulation.java */
+
 package model;
 
 /**
@@ -11,11 +13,21 @@ public class QuestItemEncapsulation extends QuestItem {
 
 	/** description for encapsulation pillar */
 	private String MY_DESCRIPTION =  "Obtaining this jewel can boost a character's defense.";
-
+	
+	/**
+	 * Solidifies the name of the quest item
+	 * 
+	 * @param theItemName the name of the item
+	 */
 	public QuestItemEncapsulation(String theItemName) {
 		super(theItemName);
 	}
 
+	/**
+	 * item will activate to boost the character's defenses
+	 * 
+	 * @param theUser the character that the user selected for the game
+	 */
 	@Override
 	public void itemEffectActivate(DungeonCharacter theUser) {
 		float DEFENSE = 1;

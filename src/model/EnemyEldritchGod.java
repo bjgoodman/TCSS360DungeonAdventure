@@ -85,7 +85,6 @@ public class EnemyEldritchGod extends DungeonCharacter {
 	@Override
 	void useAbility2(DungeonCharacter theTarget) {
 		// DOES NOTHING BY DESIGN
-
 	}
 
 }

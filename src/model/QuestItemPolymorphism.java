@@ -1,3 +1,5 @@
+/* QuestItemPolymorphism.java */
+
 package model;
 
 /**
@@ -13,12 +15,22 @@ public class QuestItemPolymorphism extends QuestItem { // character buff to obta
 	private String MY_DESCRIPTION =  "Obtaining this jewel can increase a character's " +
 			"chance to hit their attacks.";
 
+	/**
+	 * Solidifies the name of the quest item
+	 * 
+	 * @param theItemName the name of the item
+	 */
 	public QuestItemPolymorphism(String theItemName) {
 		super(theItemName);
 	}
 
+	/**
+	 * item will activate to boost the character's chances to attack
+	 * 
+	 * @param theUser the character that the user selected for the game
+	 */
 	@Override
-	public void itemEffectActivate(DungeonCharacter theUser) {
+	public void itemEffectActivate(DungeonCharacter theUser) { // want to change to gain enemie's abilities
 		float ATTACK_CHANCE = 2;
 		float ATTACK_CHANCE_MODIFIER = (float) 1.2;
 		float PERCENT = 100;
