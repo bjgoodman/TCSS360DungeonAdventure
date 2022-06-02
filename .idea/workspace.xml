@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f091e8b-e753-4bfb-baf2-c34d7dd5fe52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Accessory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/AccessoryTwinbladeTalisman.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterBarbarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroBarbarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterEnchantress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroEnchantress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterThief.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroThief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyCultist.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterCultist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyEldritchGod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterEldritchGod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyFinalBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterFinalBoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyGoblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterGoblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyOgreWarchief.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterOgreWarchief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyOverlord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterOverlord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemySkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterSkeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/ItemPotion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemEncapsulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemEncapsulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemPolymorphism.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemPolymorphism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/module-info.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29qll7mJ8qpObOSMxdn0qjqn8LM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/JavaFX/javafx-sdk-18.0.1/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.ControllerMain">
+    <configuration name="ControllerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerMain" />
+      <module name="TCSS360DungeonAdventure" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="application.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="application.Main" />
+      <module name="TCSS360DungeonAdventure" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules=javafx.controls" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="model.DungeonTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.DungeonTester" />
+      <module name="TCSS360DungeonAdventure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ControllerMain" />
+      <item itemvalue="Application.application.Main" />
+      <item itemvalue="Application.model.DungeonTester" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ControllerMain" />
+        <item itemvalue="Application.model.DungeonTester" />
+        <item itemvalue="Application.application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f091e8b-e753-4bfb-baf2-c34d7dd5fe52" name="Changes" comment="" />
+      <created>1653848648355</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653848648355</updated>
+      <workItem from="1653848649490" duration="1100000" />
+      <workItem from="1653849760482" duration="253000" />
+      <workItem from="1653850026849" duration="7360000" />
+      <workItem from="1653934796845" duration="12000" />
+      <workItem from="1653934812604" duration="10000" />
+      <workItem from="1653934955299" duration="1797000" />
+      <workItem from="1653938391979" duration="6800000" />
+      <workItem from="1653968932119" duration="2161000" />
+      <workItem from="1654098544240" duration="18265000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/DungeonTester.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
