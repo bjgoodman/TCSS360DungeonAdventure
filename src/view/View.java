@@ -38,10 +38,10 @@ public class View {
 
                 if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomWall) {
                     tile.setImage(wall);
-                } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomOccupiable
+                } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomPlain
                         && ((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant() == false) {
                     tile.setImage(floor);
-                } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomOccupiable
+                } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomPlain
                         && ((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant() == true) {
                     if (((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).getMyOccupant() instanceof HeroAdventurer) {
                         tile.setImage(adventurer);

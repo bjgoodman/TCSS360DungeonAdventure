@@ -37,13 +37,15 @@ public class ControllerMain extends Application {
 
     private void gameStart(Stage primaryStage) throws IOException {
 
-        HeroAdventurer player = new HeroAdventurer("Player");
-
         Dungeon dungeon = new Dungeon(35, 75);
+
+        HeroAdventurer player = new HeroAdventurer("Player", dungeon);
+
+        dungeon.placeHero(player);
         View view = new View(dungeon);
         view.loadAssets();
 
-        Scene scene = new Scene(view.draw(), 1250, 1000);
+        Scene scene = new Scene(view.draw(), 1250, 800);
         new Movement(scene, view, primaryStage, player);
         primaryStage.setScene(scene);
     }

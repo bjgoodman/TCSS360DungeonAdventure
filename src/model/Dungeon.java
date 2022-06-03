@@ -24,7 +24,11 @@ public class Dungeon {
 		myIntDungeon = new int[myHeight][myWidth];
 		myIntDungeon = generateMaze(myHeight, myWidth, myIntDungeon);
 		myDungeon = dungeonOfRooms(myIntDungeon);
+		// pillars
+		// hero
 		populateDungeonPotions(myDungeon);
+		// traps
+
 	}
 	
 	public int[][] generateMaze(int theHeight, int theWidth, int[][] theDungeon) {
@@ -135,13 +139,28 @@ public class Dungeon {
  		}
 	 return roomDungeon;
 	 }
-	 
+
+
+	 public void placeHero(Hero theHero) {
+		 int i = ThreadLocalRandom.current().nextInt(getMyWidth());
+		 int j = ThreadLocalRandom.current().nextInt(getMyHeight());
+
+		 while (!(this.getMyDungeon()[j][i] instanceof RoomPlain)) {
+			 i = ThreadLocalRandom.current().nextInt(getMyWidth());
+			 j = ThreadLocalRandom.current().nextInt(getMyHeight());
+		 }
+
+		 ((RoomPlain) this.getMyDungeon()[j][i]).addOccupant(theHero);
+		 theHero.setMyX(j);
+		 theHero.setMyY(i);
+	 }
+
 	 private void populateDungeonPotions(Room[][] theDungeon) {
-	 final float POTION_ROOM_CHANCE = (float) 0.05;
+	 final float POTION_ROOM_CHANCE = (float) 0.02;
 
 	 for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
 		 for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
-				if (theDungeon[i][j] instanceof RoomOccupiable) {
+				if (theDungeon[i][j] instanceof RoomPlain) {
 					if(POTION_ROOM_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
 						theDungeon[i][j] = new RoomPotion();
 					}
@@ -149,8 +168,6 @@ public class Dungeon {
 	 		}
  		}
 	 }
-
-
 	 
 	 @Override
 	 public String toString() {

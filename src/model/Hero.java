@@ -7,14 +7,8 @@ public abstract class Hero extends DungeonCharacter {
 	private boolean hasInheritance;
 	private boolean hasPolymorphism;
 	private float myBlockChance;
-	public Hero(final String theCharacterName, final String theCharacterDescription,
-				final String theCharacterType, final char theCharacterRepresentation,
-				final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
-				final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance,
-				float theBlockChance) {
-		super(theCharacterName, theCharacterDescription, theCharacterType, theCharacterRepresentation, theAbility,
-				theHitPointsMax, theAttackDamageMin, theAttackDamageMax, theChanceToHit, theAbilityChance);
-		setMyBlockChance(theBlockChance);
+	public Hero(final String theCharacterName, Dungeon theDungeon) {
+		super(theCharacterName, theDungeon);
 		setHasAbstraction(false);
 		setHasEncapsulation(false);
 		setHasInheritance(false);
@@ -59,5 +53,24 @@ public abstract class Hero extends DungeonCharacter {
 
 	public void setHasPolymorphism(boolean hasPolymorphism) {
 		this.hasPolymorphism = hasPolymorphism;
+	}
+
+	public void constructionHelper (final String theCharacterDescription,
+									  final String theCharacterType, final char theCharacterRepresentation,
+									  final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
+									  final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance,
+									  float theBlockChance) {
+
+		setMyCharacterDescription(theCharacterDescription);
+		setMyCharacterType(theCharacterType);
+		setMyCharacterRepresentation(theCharacterRepresentation);
+		setMyAbility(theAbility);
+		setMyHitPointsMax(theHitPointsMax);
+		setMyCurrentHitPoints(theHitPointsMax);
+		setMyAttackDamageMin(theAttackDamageMin);
+		setMyAttackDamageMax(theAttackDamageMax);
+		setMyChanceToHit(theChanceToHit);
+		setMyAbilityChance(theAbilityChance);
+		setMyBlockChance(theBlockChance);
 	}
 }

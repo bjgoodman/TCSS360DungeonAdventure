@@ -5,9 +5,26 @@ public abstract class Monster extends DungeonCharacter {
 	private float myHealChance;
 	private float myAbilityChance;
 	
-	public Monster(String theName, String theDescription, char theRepresentingCharacter, String theCharacterType) {
-		super(theName, theDescription, theRepresentingCharacter, theCharacterType);
-		super.setMyAbility(theAbility);
+	public Monster(String theName, Dungeon theDungeon) {
+		super(theName, theDungeon);
+	}
+
+	public void constructionHelper (final String theCharacterDescription,
+									final String theCharacterType, final char theCharacterRepresentation,
+									final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
+									final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance,
+									float theHealChance) {
+
+		setMyCharacterDescription(theCharacterDescription);
+		setMyCharacterType(theCharacterType);
+		setMyCharacterRepresentation(theCharacterRepresentation);
+		setMyAbility(theAbility);
+		setMyHitPointsMax(theHitPointsMax);
+		setMyCurrentHitPoints(theHitPointsMax);
+		setMyAttackDamageMin(theAttackDamageMin);
+		setMyAttackDamageMax(theAttackDamageMax);
+		setMyChanceToHit(theChanceToHit);
+		setMyAbilityChance(theAbilityChance);
 		setMyHealChance(theHealChance);
 	}
 

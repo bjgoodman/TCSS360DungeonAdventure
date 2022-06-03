@@ -21,23 +21,12 @@ public abstract class DungeonCharacter {
 	private float myDefense;
 	private int myX;
 	private int myY;
+
 	private Dungeon myDungeon;
 
-	public DungeonCharacter(final String theCharacterName, final String theCharacterDescription,
-							final String theCharacterType, final char theCharacterRepresentation,
-							final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
-							final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance) {
+	public DungeonCharacter(final String theCharacterName, final Dungeon theDungeon) {
 		setMyCharacterName(theCharacterName);
-		setMyCharacterDescription(theCharacterDescription);
-		setMyCharacterType(theCharacterType);
-		setMyCharacterRepresentation(theCharacterRepresentation);
-		setMyAbility(theAbility);
-		setMyHitPointsMax(theHitPointsMax);
-		setMyCurrentHitPoints(theHitPointsMax);
-		setMyAttackDamageMin(theAttackDamageMin);
-		setMyAttackDamageMax(theAttackDamageMax);
-		setMyChanceToHit(theChanceToHit);
-		setMyAbilityChance(theAbilityChance);
+		setMyDungeon(theDungeon);
 	}
 
 	/* CHARACTER GOING DOWN */
@@ -62,13 +51,13 @@ public abstract class DungeonCharacter {
 
 	public void move(DIRECTION dir) {
 		if (dir == DIRECTION.NORTH) {
-			this.increaseY();
-		} else if (dir == DIRECTION.SOUTH) {
-			this.decreaseY();
-		} else if (dir == DIRECTION.EAST) {
-			this.increaseX();
-		} else {
 			this.decreaseX();
+		} else if (dir == DIRECTION.SOUTH) {
+			this.increaseX();
+		} else if (dir == DIRECTION.EAST) {
+			this.increaseY();
+		} else {
+			this.decreaseY();
 		}
 	}
 
@@ -210,6 +199,14 @@ public abstract class DungeonCharacter {
 		myCharacterDescription = theCharacterDescription;
 	}
 
+	public Dungeon getMyDungeon() {
+		return myDungeon;
+	}
+
+	public void setMyDungeon(Dungeon myDungeon) {
+		this.myDungeon = myDungeon;
+	}
+
 	public int getMyX() {
 		return myX;
 	}
@@ -226,9 +223,17 @@ public abstract class DungeonCharacter {
 		myY = theY;
 	}
 
+
+
 	private void nextStep(int step_x, int step_y) {
+		if (this.getMyDungeon().getMyDungeon()[step_x][step_y] instanceof RoomOccupiable) {
+			((RoomOccupiable) this.getMyDungeon().getMyDungeon()[this.getMyX()][this.getMyY()]).removeOccupant(this);
 			setMyX(step_x);
 			setMyY(step_y);
+			((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).addOccupant(this);
+		} else {
+			System.out.println("Invalid movement command.");
+		}
 	}
 
 	// toString for DungeonCharacters

@@ -8,10 +8,12 @@ public class RoomTrap extends RoomActivatable {
     public RoomTrap() {
         setMyRoomType(MY_ROOM_TYPE);
         setMyRoomCharacter(MY_ROOM_CHARACTER);
+        setCanActivate(true);
     }
 
     @Override
     public void onActivate() {
         getMyOccupant().setMyCurrentHitPoints(getMyOccupant().getMyCurrentHitPoints() - TRAP_VALUE);
+        setCanActivate(false);
     }
 }

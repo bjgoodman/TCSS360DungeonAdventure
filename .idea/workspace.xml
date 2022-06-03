@@ -48,39 +48,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/JavaFX/javafx-sdk-18.0.1/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Program Files/JavaFX/javafx-sdk-18.0.1/lib",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pathVariables"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.ControllerMain">
     <configuration name="ControllerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.ControllerMain" />
       <module name="TCSS360DungeonAdventure" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="application.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="application.Main" />
-      <module name="TCSS360DungeonAdventure" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules=javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="application.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,14 +90,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.ControllerMain" />
-      <item itemvalue="Application.application.Main" />
       <item itemvalue="Application.model.DungeonTester" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ControllerMain" />
         <item itemvalue="Application.model.DungeonTester" />
-        <item itemvalue="Application.application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -133,6 +118,9 @@
       <workItem from="1654098544240" duration="18265000" />
       <workItem from="1654219450942" duration="2741000" />
       <workItem from="1654247335199" duration="6287000" />
+      <workItem from="1654275729788" duration="575000" />
+      <workItem from="1654276655317" duration="10000000" />
+      <workItem from="1654287029426" duration="6438000" />
     </task>
     <servers />
   </component>
@@ -144,7 +132,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/DungeonTester.java</url>
-          <line>6</line>
+          <line>5</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

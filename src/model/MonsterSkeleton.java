@@ -4,29 +4,32 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MonsterSkeleton extends Monster {
 
-	private static final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that " +
+	private final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that " +
 			"has long lost its flesh, only consisting of bones and scraps of cloth. " +
 			"It was doomed to walk the crypt forever... until now. His special ability " +
 			"is to rush the opponent down, attempting to inflict 5 instances of pitiful damage.";
-	private static final String MY_CHARACTER_TYPE = "Undead";
-	private static final char MY_REPRESENTING_CHARACTER = 'S';
-	private static final String MY_ABILITY = "Rickety Rushdown";
-	private static final int MY_HP = 80;
-	private static final int MY_AD_MAX = 18;
-	private static final int MY_AD_MIN = 9;
-	private static final int MY_AS = 1;
-	private static final float MY_ACHANCE = (float) 0.7;
-	private static final float MY_ABILITYCHANCE = (float) 0.15;
-	private static final float MY_DEF = (float) 0.1;
-	private static final float MY_HEAL_CHANCE = (float) 0.05;
+	private final String MY_CHARACTER_TYPE = "Undead";
+	private final char MY_REPRESENTING_CHARACTER = 'S';
+	private final String MY_ABILITY = "Rickety Rushdown";
+	private int MY_MAX_HP = 80;
+	private int MY_AD_MAX = 18;
+	private int MY_AD_MIN = 9;
+	private int MY_AS = 1;
+	private float MY_ACHANCE = (float) 0.7;
+	private float MY_ABILITYCHANCE = (float) 0.15;
 
-	public MonsterSkeleton(String theName) {
-		super(theName, MY_DESCRIPTION, MY_REPRESENTING_CHARACTER, MY_CHARACTER_TYPE, MY_HP,
-				MY_AD_MAX, MY_AD_MIN, MY_AS, MY_ACHANCE, MY_ABILITYCHANCE, MY_DEF, MY_HEAL_CHANCE, MY_ABILITY);
+	//TODO Do something with this
+	//private float MY_DEF = (float) 0.1;
+	private float MY_HEAL_CHANCE = (float) 0.05;
+
+	public MonsterSkeleton(String theName, Dungeon theDungeon) {
+		super(theName, theDungeon);
+		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
+				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
 	}
 
 	@Override
-	void useAbility1(DungeonCharacter theTarget) {
+	void useAbility(DungeonCharacter theTarget) {
 		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "!");
 		this.fiveFoldRushdown(theTarget, 1);
 		this.fiveFoldRushdown(theTarget, 2);

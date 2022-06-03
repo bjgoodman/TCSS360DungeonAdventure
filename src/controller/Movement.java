@@ -32,25 +32,25 @@ public class Movement {
                 scene.setRoot(view.draw());
                 stage.setScene(scene);
                 System.out.println("UP");
-                System.out.println(player.getMyX() + ", " + player.getMyY());
+                System.out.println(player.getMyY() + ", " + player.getMyX());
             } else if (event.getCode() == KeyCode.DOWN) {
                 player.move(DIRECTION.SOUTH);
                 scene.setRoot(view.draw());
                 stage.setScene(scene);
                 System.out.println("DOWN");
-                System.out.println(player.getMyX() + ", " + player.getMyY());
+                System.out.println(player.getMyY() + ", " + player.getMyX());
             } else if (event.getCode() == KeyCode.RIGHT) {
                 player.move(DIRECTION.EAST);
                 scene.setRoot(view.draw());
                 stage.setScene(scene);
                 System.out.println("RIGHT");
-                System.out.println(player.getMyX() + ", " + player.getMyY());
+                System.out.println(player.getMyY() + ", " + player.getMyX());
             } else if (event.getCode() == KeyCode.LEFT) {
                 player.move(DIRECTION.WEST);
                 scene.setRoot(view.draw());
                 stage.setScene(scene);
                 System.out.println("LEFT");
-                System.out.println(player.getMyX() + ", " + player.getMyY());
+                System.out.println(player.getMyY() + ", " + player.getMyX());
             }
         });
     }
