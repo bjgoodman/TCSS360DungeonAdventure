@@ -16,7 +16,6 @@ public class HeroEnchantress extends Hero {
 	private static final int MY_HP = 100;
 	private static final int MY_AD_MAX = 21;
 	private static final int MY_AD_MIN = 15;
-	private static final int MY_AS = 1;
 	private static final float MY_ACHANCE = (float) 0.7;
 	private static final float MY_ABILITYCHANCE = (float) 0.2;
 	private static final float MY_DEF = (float) 0.3;
@@ -25,7 +24,7 @@ public class HeroEnchantress extends Hero {
 
 	public HeroEnchantress(String theName) {
 		super(theName, MY_DESCRIPTION, MY_REPRESENTING_CHARACTER, MY_CHARACTER_TYPE, MY_HP,
-				MY_AD_MAX, MY_AD_MIN, MY_AS, MY_ACHANCE, MY_ABILITYCHANCE, MY_DEF, MY_BLOCK_CHANCE, MY_ABILITY);
+				MY_AD_MAX, MY_AD_MIN, MY_ACHANCE, MY_ABILITYCHANCE, MY_DEF, MY_BLOCK_CHANCE, MY_ABILITY);
 	}
 
 	void useAbility1(DungeonCharacter theTarget) {

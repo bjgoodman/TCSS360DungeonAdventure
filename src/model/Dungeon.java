@@ -129,7 +129,7 @@ public class Dungeon {
 				if (theDungeon[i][j] == 1) {
 					roomDungeon[i][j] = new RoomWall();
 				} else if (theDungeon[i][j] == 0) {
-					roomDungeon[i][j] = new RoomOccupiable();
+					roomDungeon[i][j] = new RoomPlain();
 				}
 	 		}
  		}
@@ -159,8 +159,8 @@ public class Dungeon {
 	 for (int i = 0; i <= (this.myDungeon.length - 1); i++) {
 		 for (int j = 0; j <= (this.myDungeon[0].length - 1); j++) {
 			 if (myDungeon[i][j] instanceof RoomOccupiable) {
-				 if (myDungeon[i][j].getMyOccupant() instanceof Hero) {
-					 str += myDungeon[i][j].getMyOccupant().getMyCharacterRepresentation();
+				 if (((RoomOccupiable) myDungeon[i][j]).getMyOccupant() instanceof Hero) {
+					 str += ((RoomOccupiable) myDungeon[i][j]).getMyOccupant().getMyCharacterRepresentation();
 				 } else {
 					 str += ' ';
 				 }

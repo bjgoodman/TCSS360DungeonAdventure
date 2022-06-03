@@ -39,11 +39,11 @@ public class View {
                 if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomWall) {
                     tile.setImage(wall);
                 } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomOccupiable
-                        && dungeon.getMyDungeon()[y_tile][x_tile].hasOccupant() == false) {
+                        && ((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant() == false) {
                     tile.setImage(floor);
                 } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomOccupiable
-                        && dungeon.getMyDungeon()[y_tile][x_tile].hasOccupant() == true) {
-                    if (dungeon.getMyDungeon()[y_tile][x_tile].getMyOccupant() instanceof HeroAdventurer) {
+                        && ((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant() == true) {
+                    if (((RoomOccupiable) dungeon.getMyDungeon()[y_tile][x_tile]).getMyOccupant() instanceof HeroAdventurer) {
                         tile.setImage(adventurer);
                     }
                 } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomPotion) {

@@ -2,9 +2,20 @@ package controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import model.Dungeon;
 import model.HeroAdventurer;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
+import java.time.LocalDate;
 import view.View;
 
 import java.io.IOException;
@@ -25,6 +36,7 @@ public class ControllerMain extends Application {
     }
 
     private void gameStart(Stage primaryStage) throws IOException {
+
         HeroAdventurer player = new HeroAdventurer("Player");
 
         Dungeon dungeon = new Dungeon(35, 75);

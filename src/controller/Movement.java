@@ -8,8 +8,6 @@ import model.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static model.Dungeon.dungeon_list;
-
 public class Movement {
 
     private Scene scene;

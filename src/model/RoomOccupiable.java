@@ -1,21 +1,33 @@
 package model;
 
-public class RoomOccupiable extends Room {
-	private static String MY_ROOM_TYPE = "Occupiable";
-	private static char MY_ROOM_CHARACTER = ' ';
-	private DungeonCharacter myOccupant;
-	
-	public RoomOccupiable() {
-		super(MY_ROOM_TYPE, MY_ROOM_CHARACTER);
-	}
-	
-	public void addOccupant(DungeonCharacter theOccupant) {
-		setMyOccupant(theOccupant);
-		setHasOccupant(true);
-	}
-	
-	public void removeOccupant() {
-		myOccupant = null;
-		setHasOccupant(false);
-	}
+public abstract class RoomOccupiable extends Room {
+
+    private DungeonCharacter myOccupant;
+    private boolean hasOccupant;
+
+    public DungeonCharacter getMyOccupant() {
+        return myOccupant;
+    }
+
+    public void setMyOccupant(DungeonCharacter myOccupant) {
+        this.myOccupant = myOccupant;
+    }
+
+    public boolean hasOccupant() {
+        return hasOccupant;
+    }
+
+    public void setHasOccupant(boolean hasOccupant) {
+        this.hasOccupant = hasOccupant;
+    }
+
+    public void addOccupant(DungeonCharacter theOccupant) {
+        setMyOccupant(theOccupant);
+        setHasOccupant(true);
+    }
+
+    public void removeOccupant(DungeonCharacter theOccupant) {
+        setMyOccupant(theOccupant);
+        setHasOccupant(true);
+    }
 }

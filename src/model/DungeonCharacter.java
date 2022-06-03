@@ -14,34 +14,86 @@ public abstract class DungeonCharacter {
 	private boolean myIsAlive;
 	private int myHitPointsMax;
 	private int myCurrentHitPoints;
-	private float myAttackSpeed;
-	private int myDefaultAttackDamageMax;
-	private int myDefaultAttackDamageMin;
-	private int myAttackDamageMax;
 	private int myAttackDamageMin;
+	private int myAttackDamageMax;
 	private float myChanceToHit;
 	private float myAbilityChance;
 	private float myDefense;
 	private int myX;
 	private int myY;
+	private Dungeon myDungeon;
 
-	public DungeonCharacter(final String theName, String theDescription, char theRepresentingCharacter, String theCharacterType, 
-							int theHP, int theADMax, int theADMin, float theAttackSpeed, float theAttackChance, float theAbilityChance, float theDefense) {
-		myCharacterName = theName;
-		myIsAlive = true;
-		setMyCharacterDescription(theDescription);
-		setMyCharacterRepresentation(theRepresentingCharacter);
+	public DungeonCharacter(final String theCharacterName, final String theCharacterDescription,
+							final String theCharacterType, final char theCharacterRepresentation,
+							final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
+							final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance) {
+		setMyCharacterName(theCharacterName);
+		setMyCharacterDescription(theCharacterDescription);
 		setMyCharacterType(theCharacterType);
-		setMyHitPointsMax(theHP);
-		setMyCurrentHitPoints(theHP);
-		setMyAttackDamageMax(theADMax);
-		setMyAttackDamageMin(theADMin);
-		setMyDefaultAttackDamageMax(theADMax);
-		setMyDefaultAttackDamageMax(theADMin);
-		setMyAttackSpeed(theAttackSpeed);
-		setMyChanceToHit(theAttackChance);
+		setMyCharacterRepresentation(theCharacterRepresentation);
+		setMyAbility(theAbility);
+		setMyHitPointsMax(theHitPointsMax);
+		setMyCurrentHitPoints(theHitPointsMax);
+		setMyAttackDamageMin(theAttackDamageMin);
+		setMyAttackDamageMax(theAttackDamageMax);
+		setMyChanceToHit(theChanceToHit);
 		setMyAbilityChance(theAbilityChance);
-		setMyDefense(theDefense);
+	}
+
+	/* CHARACTER GOING DOWN */
+	void increaseY() {
+		nextStep(getMyX(), getMyY() + 1);
+	}
+
+	/* CHARACTER GOING UP */
+	void decreaseY() {
+		nextStep(getMyX(), getMyY() - 1);
+	}
+
+	/* CHARACTER GOING RIGHT */
+	void increaseX() {
+		nextStep(getMyX() + 1, getMyY());
+	}
+
+	/* CHARACTER GOING LEFT */
+	void decreaseX() {
+		nextStep(getMyX() - 1, getMyY());
+	}
+
+	public void move(DIRECTION dir) {
+		if (dir == DIRECTION.NORTH) {
+			this.increaseY();
+		} else if (dir == DIRECTION.SOUTH) {
+			this.decreaseY();
+		} else if (dir == DIRECTION.EAST) {
+			this.increaseX();
+		} else {
+			this.decreaseX();
+		}
+	}
+
+	public void Attack(DungeonCharacter theTarget) {
+		if (this.getMyAbilityChance() > ThreadLocalRandom.current().nextFloat()) {
+			this.useAbility(theTarget);
+		} else {
+			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
+				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());		// ability behaviour moved into Hero and Monster classes, refactor this to BASIC Attack()
+				// needs to be fixed? characters ATK DMG differs from their min & max ATK PWR
+				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
+				System.out.println(this.getMyCharacterName() + " dealt " + damageDone
+						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
+						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+			} else {
+				System.out.println(this.getMyCharacterName() + "'s attack missed!");
+			}
+		}
+		if (!theTarget.isAlive()) {
+			System.out.println(theTarget.getMyCharacterName() + " died!");
+		}
+	}
+
+	public int damageDealt() {
+		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + ONE);
 	}
 
 	public String getMyCharacterName() {
@@ -72,7 +124,7 @@ public abstract class DungeonCharacter {
 		return myAbility;
 	}
 
-	public void setMyAbility1(final String theAbility) {
+	public void setMyAbility(final String theAbility) {
 		myAbility = theAbility;
 	}
 
@@ -101,18 +153,10 @@ public abstract class DungeonCharacter {
 			myCurrentHitPoints = getMyHitPointsMax();
 		} else if (theCurrentHitPoints <= ZERO) {
 			myCurrentHitPoints = ZERO;
-			this.setAlive(false);
+			die();
 		} else {
 			myCurrentHitPoints = theCurrentHitPoints;
 		}
-	}
-
-	public float getMyAttackSpeed() {
-		return myAttackSpeed;
-	}
-
-	public void setMyAttackSpeed(final float theAttackSpeed) {
-		myAttackSpeed = theAttackSpeed;
 	}
 
 	public int getMyAttackDamageMax() {
@@ -130,23 +174,6 @@ public abstract class DungeonCharacter {
 	public void setMyAttackDamageMin(final int theAttackDamageMin) {
 		myAttackDamageMin = theAttackDamageMin;
 	}
-
-	public int getMyDefaultAttackDamageMax() {
-		return myDefaultAttackDamageMax;
-	}
-
-	public void setMyDefaultAttackDamageMax(final int theDefaultAttackDamageMax) {
-		myDefaultAttackDamageMax = theDefaultAttackDamageMax;
-	}
-
-	public int getMyDefaultAttackDamageMin() {
-		return myDefaultAttackDamageMin;
-	}
-
-	public void setMyDefaultAttackDamageMin(final int theDefaultAttackDamageMin) {
-		myDefaultAttackDamageMin = theDefaultAttackDamageMin;
-	}
-
 	public float getMyChanceToHit() {
 		return myChanceToHit;
 	}
@@ -183,26 +210,6 @@ public abstract class DungeonCharacter {
 		myCharacterDescription = theCharacterDescription;
 	}
 
-	/* CHARACTER GOING DOWN */
-	void increaseY() {
-		nextStep(getMyX(), getMyY() + 1);
-	}
-
-	/* CHARACTER GOING UP */
-	void decreaseY() {
-		nextStep(getMyX(), getMyY() - 1);
-	}
-
-	/* CHARACTER GOING RIGHT */
-	void increaseX() {
-		nextStep(getMyX() + 1, getMyY());
-	}
-
-	/* CHARACTER GOING LEFT */
-	void decreaseX() {
-		nextStep(getMyX() - 1, getMyY());
-	}
-
 	public int getMyX() {
 		return myX;
 	}
@@ -224,44 +231,10 @@ public abstract class DungeonCharacter {
 			setMyY(step_y);
 	}
 
-	public int damageDealt() {
-		return ThreadLocalRandom.current().nextInt(this.getMyAttackDamageMin(), this.getMyAttackDamageMax() + ONE);
-	}
-
-	public void Attack(DungeonCharacter theTarget) {
-//		final int ONE = 1;
-//		final int TWO = 2;
-//		if (this.getMyAbilityChance() > ThreadLocalRandom.current().nextFloat()) {
-//			if (this.hasTwoAbilities()) {
-//				int fiftyFifty = ThreadLocalRandom.current().nextInt(ONE, (TWO + ONE));
-//				if (fiftyFifty == ONE) {
-//					this.useAbility1(theTarget);
-//				} else if (fiftyFifty == TWO) {					// hook method ?
-//					this.useAbility2(theTarget);
-//				}
-//			} else {
-//				this.useAbility1(theTarget);
-//			}
-//		} else {
-//			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-//				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());		// ability behaviour moved into Hero and Monster classes, refactor this to BASIC Attack()
-//				// needs to be fixed? characters ATK DMG differs from their min & max ATK PWR
-//				// System.out.println(damageDealt());
-//				// System.out.println(theTarget.getMyAttackReduction());
-//				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
-//				System.out.println(this.getMyCharacterName() + " dealt " + damageDone
-//						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
-//						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
-//			} else {
-//				System.out.println(this.getMyCharacterName() + "'s attack missed!");
-//			}
-//		}
-//		if (!theTarget.isAlive()) {
-//			System.out.println(theTarget.getMyCharacterName() + " died!");
-//		}
-	}
-	
 	// toString for DungeonCharacters
+	private void die() {
+		setAlive(false);
+	}
 
-	abstract void useAbility1(final DungeonCharacter theTarget);
+	abstract void useAbility(final DungeonCharacter theTarget);
 }

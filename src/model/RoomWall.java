@@ -5,6 +5,7 @@ public class RoomWall extends Room {
 	private static char MY_ROOM_CHARACTER = '?';
 	
 	public RoomWall() {
-		super(MY_ROOM_TYPE, MY_ROOM_CHARACTER);
+		setMyRoomType(MY_ROOM_TYPE);
+		setMyRoomCharacter(MY_ROOM_CHARACTER);
 	}
 }
