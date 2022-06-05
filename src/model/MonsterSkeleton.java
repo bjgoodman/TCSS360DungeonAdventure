@@ -2,19 +2,20 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import static model.MonsterFactory.theMonsterFactory;
+
 public class MonsterSkeleton extends Monster {
 
 	private final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that " +
 			"has long lost its flesh, only consisting of bones and scraps of cloth. " +
 			"It was doomed to walk the crypt forever... until now. His special ability " +
 			"is to rush the opponent down, attempting to inflict 5 instances of pitiful damage.";
-	private final String MY_CHARACTER_TYPE = "Undead";
+	private final String MY_CHARACTER_TYPE = "Skeleton";
 	private final char MY_REPRESENTING_CHARACTER = 'S';
 	private final String MY_ABILITY = "Rickety Rushdown";
 	private int MY_MAX_HP = 80;
 	private int MY_AD_MAX = 18;
 	private int MY_AD_MIN = 9;
-	private int MY_AS = 1;
 	private float MY_ACHANCE = (float) 0.7;
 	private float MY_ABILITYCHANCE = (float) 0.15;
 
@@ -23,7 +24,7 @@ public class MonsterSkeleton extends Monster {
 	private float MY_HEAL_CHANCE = (float) 0.05;
 
 	public MonsterSkeleton(String theName, Dungeon theDungeon) {
-		super(theName, theDungeon);
+		super(theMonsterFactory.createName("Skeleton"), theDungeon);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
 				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
 	}

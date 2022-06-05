@@ -1,6 +1,8 @@
 package model;
 
-public class RoomPotion extends RoomActivatable {
+import view.Interface;
+
+public class RoomPotion extends RoomConsumable {
 	private final String MY_ROOM_TYPE = "Potion Room";
 	private final char MY_ROOM_CHARACTER = 'P';
 	private final int POTION_VALUE = 50;
@@ -9,12 +11,22 @@ public class RoomPotion extends RoomActivatable {
 	public RoomPotion() {
 		setMyRoomType(MY_ROOM_TYPE);
 		setMyRoomCharacter(MY_ROOM_CHARACTER);
-		setCanActivate(true);
+		setReactivatable(false);
 	}
 
 	@Override
-	public void onActivate() {
-		getMyOccupant().setMyCurrentHitPoints(getMyOccupant().getMyCurrentHitPoints() + POTION_VALUE);
-		setCanActivate(false);
+	void onActivate() {
+		if (hasConsumed()) {
+			Interface.newEvent("I already drank the potion.");
+		} else {
+			getMyOccupant().setMyCurrentHitPoints(getMyOccupant().getMyCurrentHitPoints() + POTION_VALUE);
+			Interface.newEvent("Swig! Yummy...");
+		}
+	}
+
+	@Override
+	public void onConsume() {
+		onActivate();
+		setHasConsumed(true);
 	}
 }

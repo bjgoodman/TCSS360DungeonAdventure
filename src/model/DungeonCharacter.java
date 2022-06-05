@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class DungeonCharacter {
@@ -25,6 +27,7 @@ public abstract class DungeonCharacter {
 	private Dungeon myDungeon;
 
 	public DungeonCharacter(final String theCharacterName, final Dungeon theDungeon) {
+		myIsAlive = true;
 		setMyCharacterName(theCharacterName);
 		setMyDungeon(theDungeon);
 	}
@@ -226,13 +229,17 @@ public abstract class DungeonCharacter {
 
 
 	private void nextStep(int step_x, int step_y) {
-		if (this.getMyDungeon().getMyDungeon()[step_x][step_y] instanceof RoomOccupiable) {
-			((RoomOccupiable) this.getMyDungeon().getMyDungeon()[this.getMyX()][this.getMyY()]).removeOccupant(this);
-			setMyX(step_x);
-			setMyY(step_y);
-			((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).addOccupant(this);
+		if (this.isAlive()) {
+			if (this.getMyDungeon().getMyDungeon()[step_x][step_y] instanceof RoomOccupiable) {
+				((RoomOccupiable) this.getMyDungeon().getMyDungeon()[this.getMyX()][this.getMyY()]).removeOccupant(this);
+				setMyX(step_x);
+				setMyY(step_y);
+				((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).addOccupant(this);
+			} else {
+				Interface.newEvent("Invalid move.");
+			}
 		} else {
-			System.out.println("Invalid movement command.");
+			Interface.newEvent("You cannot do that, you are dead.");
 		}
 	}
 

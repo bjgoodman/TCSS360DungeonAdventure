@@ -48,23 +48,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Program Files/JavaFX/javafx-sdk-18.0.1/lib",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pathVariables"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/JavaFX/javafx-sdk-18.0.1/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.ControllerMain">
-    <configuration name="ControllerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Application.controller.ControllerMain">
+    <configuration name="controller.ControllerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.ControllerMain" />
       <module name="TCSS360DungeonAdventure" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\JavaFX\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.*" />
@@ -89,12 +89,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ControllerMain" />
+      <item itemvalue="Application.controller.ControllerMain" />
       <item itemvalue="Application.model.DungeonTester" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControllerMain" />
+        <item itemvalue="Application.controller.ControllerMain" />
         <item itemvalue="Application.model.DungeonTester" />
       </list>
     </recent_temporary>
@@ -121,21 +121,11 @@
       <workItem from="1654275729788" duration="575000" />
       <workItem from="1654276655317" duration="10000000" />
       <workItem from="1654287029426" duration="6438000" />
+      <workItem from="1654381253856" duration="13940000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/DungeonTester.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

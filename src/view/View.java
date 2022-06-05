@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
@@ -9,10 +10,16 @@ import java.io.IOException;
 
 public class View {
 
-    private Image wall, floor, potion, adventurer;
+    private Image wall, floor, potion, adventurer, polymorphism;
     private int WIDTH = 75;
     private int HEIGHT = 35;
     static final int TILE_SIZE = 16;
+
+    Label line4 = new Label("");
+    Label line3 = new Label("");
+    Label line2 = new Label("");
+    Label line1 = new Label("");
+
     Dungeon dungeon;
 
     public View(Dungeon dungeon) {
@@ -23,9 +30,10 @@ public class View {
         floor = new Image("file:assets/level/floor1.png");
         potion = new Image("file:assets/item/ruby_new.png");
         adventurer = new Image("file:assets/character/adventurer.png");
+        polymorphism = new Image("file:assets/objectives/polymorphism.png");
     }
 
-    public Pane draw() {
+    public Pane draw(Hero player) {
         Pane root = new Pane();
 
 
@@ -47,7 +55,27 @@ public class View {
                         tile.setImage(adventurer);
                     }
                 } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomPotion) {
+                    if (((RoomPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasConsumed()
+                            && ((RoomPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant()) {
+                        tile.setImage(adventurer);
+                    } else if (((RoomPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasConsumed()
+                            && !((RoomPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant()) {
+                        tile.setImage(floor);
+                    } else {
+                        tile.setImage(potion);
+                    }
+                } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomPoisonPotion) {
+                if (((RoomPoisonPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasConsumed()
+                        && ((RoomPoisonPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant()) {
+                    tile.setImage(adventurer);
+                } else if (((RoomPoisonPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasConsumed()
+                        && !((RoomPoisonPotion) dungeon.getMyDungeon()[y_tile][x_tile]).hasOccupant()) {
+                    tile.setImage(floor);
+                } else {
                     tile.setImage(potion);
+                }
+            } else if (dungeon.getMyDungeon()[y_tile][x_tile] instanceof RoomOOPPolymorphism) {
+                        tile.setImage(polymorphism);
                 }
 
                 tile.setX(x_tile * TILE_SIZE + 25);
@@ -56,7 +84,7 @@ public class View {
             }
         }
 
-
+        new Interface(root, player);
         return root;
     }
 }

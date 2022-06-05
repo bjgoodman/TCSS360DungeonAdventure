@@ -16,6 +16,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import java.time.LocalDate;
+
+import view.Interface;
 import view.View;
 
 import java.io.IOException;
@@ -41,13 +43,22 @@ public class ControllerMain extends Application {
 
         HeroAdventurer player = new HeroAdventurer("Player", dungeon);
 
+        // monster factory, stored into arraylist of monster
         dungeon.placeHero(player);
         View view = new View(dungeon);
         view.loadAssets();
-
-        Scene scene = new Scene(view.draw(), 1250, 800);
+        startMessage();
+        Scene scene = new Scene(view.draw(player), 1250, 720);
+        scene.getStylesheets().add("./stylesheet.css");
         new Movement(scene, view, primaryStage, player);
         primaryStage.setScene(scene);
+    }
+
+    private void startMessage() {
+        Interface.newEvent(" ");
+        Interface.newEvent("You have entered the dungeon.");
+        Interface.newEvent("Good luck!");
+        Interface.newEvent(" ");
     }
 
 }

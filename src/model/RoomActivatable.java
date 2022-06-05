@@ -1,14 +1,15 @@
 package model;
 
 abstract class RoomActivatable extends RoomOccupiable {
-    private boolean canActivate;
+    private boolean isReactivatable;
 
-    public boolean canActivate() {
-        return canActivate;
+    public boolean isReactivatable() {
+        return isReactivatable;
     }
 
-    public void setCanActivate(boolean canActivate) {
-        this.canActivate = canActivate;
+    public void setReactivatable(boolean reactivatable) {
+        isReactivatable = reactivatable;
     }
-    public abstract void onActivate();
+
+    abstract void onActivate();
 }

@@ -1,5 +1,7 @@
 package model;
 
+import static model.MonsterFactory.theMonsterFactory;
+
 public class MonsterGoblin extends Monster {
 
 
@@ -8,14 +10,13 @@ public class MonsterGoblin extends Monster {
 			"through. Her first ability is to slash the air with rapid speed towards opponent damaging them. Her " +
 			"second ability is to grip her scythe and spin uncontrollably causing the enemy to be sucked into her " +
 			"cyclone of horrifying cuts.";
-	private final String MY_CHARACTER_TYPE = "Ogroid";
+	private final String MY_CHARACTER_TYPE = "Goblin";
 	private final char MY_REPRESENTING_CHARACTER = 'G';
 	private final String MY_ABILITY = "Air Slash";
 	private int MY_ABILITY_DAMAGE = 14;
 	private int MY_MAX_HP = 98;
 	private int MY_AD_MAX = 19;
 	private int MY_AD_MIN = 11;
-	private int MY_AS = 2;
 	private float MY_ACHANCE = (float) 0.75;
 	private float MY_ABILITYCHANCE = (float) 0.16;
 
@@ -24,7 +25,7 @@ public class MonsterGoblin extends Monster {
 	private float MY_HEAL_CHANCE = (float) 0.1;
 	
 	public MonsterGoblin(String theName, Dungeon theDungeon) {
-		super(theName, theDungeon);
+		super(theMonsterFactory.createName("Goblin"), theDungeon);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
 				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
 	}
