@@ -12,37 +12,47 @@
 }
 
 .new_game {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .new_game_adv {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .new_game_barb {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
+
 .new_game_thief {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
+
 .new_game_enchantress {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .save_game {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .load_game {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .about_game {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 .instructions_game {
-    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-color: rgb(0, 0, 0);
+}
+
+.file {
+    -fx-background-color: rgb(0, 0, 0);
+}
+
+.about {
+    -fx-background-color: rgb(0, 0, 0);
 }
 
 

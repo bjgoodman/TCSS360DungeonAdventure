@@ -11,10 +11,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Algorithm taken from:
- * 
- * http://www.migapro.com/depth-first-search/
- * @author Benji
+ * @author Benjamin Goodman
+ * @version 0.9 05/06/2022
  */
 public class Dungeon implements Serializable {
 	@Serial
@@ -33,6 +31,8 @@ public class Dungeon implements Serializable {
 	private boolean polymorphismActivated;
 
 	public static HashMap<String, ArrayList<Float>> monsterstats = new HashMap<String, ArrayList<Float>>();
+
+	private static SaveManager sm;
 
 	private Hero myPlayer;
 	
@@ -150,8 +150,13 @@ public class Dungeon implements Serializable {
 	      }
      return array;
 	 }
-	 
-	 private Room[][] dungeonOfRooms(int[][] theDungeon) {
+
+	/**
+	 * Create Object Dungeon out of integer Dungeon.
+	 * @param theDungeon the 2d integer Dungeon
+	 * @return 2d array of Rooms
+	 */
+	private Room[][] dungeonOfRooms(int[][] theDungeon) {
 	 Room[][] roomDungeon = new Room[this.myIntDungeon.length][this.myIntDungeon[0].length];
 	 
 	 for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
@@ -166,9 +171,12 @@ public class Dungeon implements Serializable {
 	 return roomDungeon;
 	 }
 
-	 private void connectDBMonsters() {
-		 //FILLING ENEMIES USING SQLITE
-
+	/**
+	 * Method for polling monster stats from SQLite database.
+	 *
+	 * Credit to Manny & Bryce for helping me.
+	 */
+	private void connectDBMonsters() {
 		 SQLiteDataSource ds = null;
 
 		 try {
@@ -189,7 +197,7 @@ public class Dungeon implements Serializable {
 			 //walk through each 'row' of results, grab data by column/field name
 			 while (rs.next()) {
 				 ArrayList<Float> stats = new ArrayList<>();
-				 String type = rs.getString( "TYPE");
+				 String type = rs.getString("TYPE");
 				 float abilitydamage = rs.getFloat("ABILITYDMG");
 				 float maxhp = rs.getFloat("MAXHP");
 				 float admax = rs.getFloat("ADMAX");
@@ -344,14 +352,14 @@ public class Dungeon implements Serializable {
 	 
 	 for (int i = 0; i <= (this.myDungeon.length - 1); i++) {
 		 for (int j = 0; j <= (this.myDungeon[0].length - 1); j++) {
-			 if (myDungeon[i][j] instanceof RoomOccupiable) {
-				 if (((RoomOccupiable) myDungeon[i][j]).hasOccupant()) {
+			 if (myDungeon[i][j] instanceof RoomPlain) {
+				 if (((RoomPlain) myDungeon[i][j]).hasOccupant()) {
 					 str += ((RoomOccupiable) myDungeon[i][j]).getMyOccupant().getMyCharacterRepresentation();
 				 } else {
 					 str += ' ';
 				 }
 			 } else if (myDungeon[i][j] instanceof RoomWall) {
-				 str += '?';
+				 str += '#';
 			 } else if (myDungeon[i][j] instanceof RoomPotion) {
 				 str += "P";
 			 } else if (myDungeon[i][j] instanceof RoomPoisonPotion) {

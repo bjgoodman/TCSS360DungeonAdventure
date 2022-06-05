@@ -63,8 +63,8 @@ public class Interface {
         Image fileImage = new Image("file:assets/misc/file.png");
         Image aboutImage = new Image("file:assets/misc/about.png");
         MenuBar menuBar = new MenuBar();
-        Menu file = new Menu("File ");
-        Menu about = new Menu("About ");
+        Menu file = new Menu(" File ");
+        Menu about = new Menu(" About ");
         MenuItem newGameAdventurer = new MenuItem(" Adventurer ");
         MenuItem newGameBarb = new MenuItem(" Barbarian ");
         MenuItem newGameThief = new MenuItem(" Thief ");
@@ -84,6 +84,8 @@ public class Interface {
         loadGame.getStyleClass().add("load_game");
         aboutGame.getStyleClass().add("about_game");
         instructionsGame.getStyleClass().add("instructions_game");
+        file.getStyleClass().add("file");
+        about.getStyleClass().add("about");
 
         file.getItems().add(newGameSubMenu);
         newGameSubMenu.getItems().add(newGameAdventurer);

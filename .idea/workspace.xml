@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3f091e8b-e753-4bfb-baf2-c34d7dd5fe52" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/Dungeon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterCultist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterCultist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterEldritch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterEldritch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterGoblin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterGoblin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterOgre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterOgre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterOverlord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterOverlord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterSkeleton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCSS360DungeonAdventure/model/MonsterSkeleton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Dungeon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterCultist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterCultist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterEldritch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterEldritch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterGoblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterGoblin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterOgre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterOgre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterOverlord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterOverlord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MonsterSkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MonsterSkeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Accessory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/AccessoryTwinbladeTalisman.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterBarbarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroBarbarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterEnchantress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroEnchantress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/CharacterThief.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/HeroThief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/DungeonTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyCultist.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterCultist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyEldritchGod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterEldritchGod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyFinalBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterFinalBoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyGoblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterGoblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyOgreWarchief.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterOgreWarchief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemyOverlord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterOverlord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/EnemySkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/MonsterSkeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/ItemPotion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemEncapsulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemEncapsulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemPolymorphism.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/model/QuestItemPolymorphism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure/src/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +41,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../eclipse workspace/TCSS360DungeonAdventure" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,23 +117,13 @@
       <workItem from="1654417564510" duration="1949000" />
       <workItem from="1654419537732" duration="1597000" />
       <workItem from="1654443598596" duration="8223000" />
-      <workItem from="1654451907424" duration="5958000" />
-      <workItem from="1654462470963" duration="2000" />
+      <workItem from="1654451907424" duration="6823000" />
+      <workItem from="1654464117934" duration="2444000" />
+      <workItem from="1654468425977" duration="954000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controller/ControllerMain.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

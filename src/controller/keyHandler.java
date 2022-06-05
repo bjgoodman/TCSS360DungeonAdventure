@@ -6,16 +6,14 @@ import javafx.stage.Stage;
 import view.View;
 import model.*;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-public class Movement {
+public class keyHandler {
 
     private Scene scene;
     private View view;
     private Stage stage;
     private Hero player;
 
-    Movement(Scene scene, View view, Stage stage, Hero player) {
+    keyHandler(Scene scene, View view, Stage stage, Hero player) {
         this.scene = scene;
         this.view = view;
         this.stage = stage;
@@ -44,7 +42,6 @@ public class Movement {
                 scene.setRoot(view.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.Z) {
-                // Todo NEED BETTER NAMES FOR THESE METHODS - CONFUSING
                 if (player.getMyDungeon().getMyDungeon()[player.getMyX()][player.getMyY()] instanceof RoomPotion) {
                     ((RoomPotion) player.getMyDungeon().getMyDungeon()[player.getMyX()][player.getMyY()]).onConsume();
                 } else if (player.getMyDungeon().getMyDungeon()[player.getMyX()][player.getMyY()] instanceof RoomPoisonPotion) {

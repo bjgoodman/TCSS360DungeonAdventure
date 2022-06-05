@@ -19,12 +19,12 @@ public class ControllerMain extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        gameStart(stage, 0, "Player");
+        gameStart(stage, 1, "Conan");
         stage.setTitle("Dungeon Delver");
         stage.show();
     }
 
-    private void gameStart(Stage primaryStage, int characterSelect, String playerName) throws IOException {
+    public void gameStart(Stage primaryStage, int characterSelect, String playerName) throws IOException {
 
 //        Scene charSelect = new Scene();
 
@@ -48,7 +48,7 @@ public class ControllerMain extends Application {
         startMessage();
         Scene scene = new Scene(view.draw(player), 1250, 720);
         scene.getStylesheets().add("./stylesheet.css");
-        new Movement(scene, view, primaryStage, player);
+        new keyHandler(scene, view, primaryStage, player);
         primaryStage.setScene(scene);
     }
 
@@ -60,7 +60,7 @@ public class ControllerMain extends Application {
         startMessage();
         Scene scene = new Scene(view.draw(player), 1250, 720);
         scene.getStylesheets().add("./stylesheet.css");
-        new Movement(scene, view, primaryStage, player);
+        new keyHandler(scene, view, primaryStage, player);
         primaryStage.setScene(scene);
     }
 
