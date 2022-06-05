@@ -1,9 +1,13 @@
 package model;
 
+import org.sqlite.SQLiteDataSource;
+
 import java.io.*;
-import java.util.Collections;
-import java.util.Random;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -20,7 +24,6 @@ public class Dungeon implements Serializable {
 	private int myHeight;
 	private int myWidth;
 
-	private ArrayList<Monster> monsterList = new ArrayList<>();
 	private boolean encapsulationActivated;
 
 	private boolean inheritanceActivated;
@@ -28,6 +31,8 @@ public class Dungeon implements Serializable {
 	private boolean abstractionActivated;
 
 	private boolean polymorphismActivated;
+
+	public static HashMap<String, ArrayList<Float>> monsterstats = new HashMap<String, ArrayList<Float>>();
 
 	private Hero myPlayer;
 	
@@ -37,6 +42,7 @@ public class Dungeon implements Serializable {
 		myIntDungeon = new int[myHeight][myWidth];
 		myIntDungeon = generateMaze(myHeight, myWidth, myIntDungeon);
 		myDungeon = dungeonOfRooms(myIntDungeon);
+		connectDBMonsters();
 		placePillars(myDungeon);
 		populateDungeonSkeletons(myDungeon);
 		populateDungeonEldritch(myDungeon);
@@ -160,6 +166,54 @@ public class Dungeon implements Serializable {
 	 return roomDungeon;
 	 }
 
+	 private void connectDBMonsters() {
+		 //FILLING ENEMIES USING SQLITE
+
+		 SQLiteDataSource ds = null;
+
+		 try {
+			 ds = new SQLiteDataSource();
+			 ds.setUrl("jdbc:sqlite:monsterDB.db");
+		 } catch (Exception e) {
+			 e.printStackTrace();
+			 System.exit(0);
+		 }
+
+		 System.out.println("Opened database successfully!");
+		 String query = "SELECT * FROM monster_table";
+
+		 try (Connection conn = ds.getConnection();
+			  Statement stmt = conn.createStatement(); ) {
+
+			 ResultSet rs = stmt.executeQuery(query);
+			 //walk through each 'row' of results, grab data by column/field name
+			 while (rs.next()) {
+				 ArrayList<Float> stats = new ArrayList<>();
+				 String type = rs.getString( "TYPE");
+				 float abilitydamage = rs.getFloat("ABILITYDMG");
+				 float maxhp = rs.getFloat("MAXHP");
+				 float admax = rs.getFloat("ADMAX");
+				 float admin = rs.getFloat("ADMIN");
+				 float attackchance = rs.getFloat("ACHANCE");
+				 float abilitychance = rs.getFloat("ABILITYCHANCE");
+				 float healchance = rs.getFloat("HEALCHANCE");
+				 stats.add(abilitydamage);
+				 stats.add(maxhp);
+				 stats.add(admax);
+				 stats.add(admin);
+				 stats.add(attackchance);
+				 stats.add(abilitychance);
+				 stats.add(healchance);
+				 monsterstats.put(type, stats);
+ 			 }
+
+
+		 } catch ( SQLException e ) {
+			 e.printStackTrace();
+			 System.exit( 0 );
+		 }
+	 }
+
 	 public void placeHero(Hero theHero) {
 		 int i = ThreadLocalRandom.current().nextInt(getMyWidth());
 		 int j = ThreadLocalRandom.current().nextInt(getMyHeight());
@@ -189,7 +243,6 @@ public class Dungeon implements Serializable {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterSkeleton skelly = new MonsterSkeleton("skeleton", this);
 					if(SKELLY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
-						monsterList.add(skelly);
 						((RoomPlain) theDungeon[i][j]).addOccupant(skelly);
 					}
 				}
@@ -205,7 +258,6 @@ public class Dungeon implements Serializable {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterGoblin goblin = new MonsterGoblin("gobbo", this);
 					if(GOBBO_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
-						monsterList.add(goblin);
 						((RoomPlain) theDungeon[i][j]).addOccupant(goblin);
 					}
 				}
@@ -221,7 +273,6 @@ public class Dungeon implements Serializable {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterEldritch eldritch = new MonsterEldritch("skeleton", this);
 					if(ELDY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
-						monsterList.add(eldritch);
 						((RoomPlain) theDungeon[i][j]).addOccupant(eldritch);
 					}
 				}
@@ -237,7 +288,6 @@ public class Dungeon implements Serializable {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterOverlord overlord = new MonsterOverlord("overlord", this);
 					if(OVERLORD_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
-						monsterList.add(overlord);
 						((RoomPlain) theDungeon[i][j]).addOccupant(overlord);
 					}
 				}
@@ -253,7 +303,6 @@ public class Dungeon implements Serializable {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterOgre ogre = new MonsterOgre("ogre", this);
 					if(OGRE_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
-						monsterList.add(ogre);
 						((RoomPlain) theDungeon[i][j]).addOccupant(ogre);
 					}
 				}
@@ -312,10 +361,6 @@ public class Dungeon implements Serializable {
 		 str += '\n';
 	 	}
 	 return str;
-	}
-
-	public ArrayList<Monster> getMonsterList() {
-		return monsterList;
 	}
 
 	public Dungeon getDungeon() {

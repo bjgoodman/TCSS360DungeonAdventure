@@ -2,6 +2,9 @@ package model;
 
 import view.Interface;
 
+import java.util.ArrayList;
+
+import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
 public class MonsterGoblin extends Monster {
@@ -26,8 +29,15 @@ public class MonsterGoblin extends Monster {
 	
 	public MonsterGoblin(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Goblin"), theDungeon);
+		ArrayList<Float> myStats = monsterstats.get("Goblin");
+		int maxhp = myStats.get(1).intValue();
+		int admax = myStats.get(2).intValue();
+		int admin = myStats.get(3).intValue();
+		float achance = myStats.get(4);
+		float abilitychance = myStats.get(5);
+		float healchance = myStats.get(6);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
-				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
+				MY_ABILITY, maxhp, admin, admax, achance, abilitychance, healchance);
 	}
 
 	@Override

@@ -2,8 +2,10 @@ package model;
 
 import view.Interface;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
 public class MonsterSkeleton extends Monster {
@@ -16,17 +18,18 @@ public class MonsterSkeleton extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'S';
 	private final String MY_ABILITY = "Rickety Rushdown";
 	private int MY_ABILITY_DAMAGE = 19;
-	private int MY_MAX_HP = 45;
-	private int MY_AD_MAX = 18;
-	private int MY_AD_MIN = 9;
-	private float MY_ACHANCE = (float) 0.7;
-	private float MY_ABILITYCHANCE = (float) 0.15;
-	private float MY_HEAL_CHANCE = (float) 0.33;
 
 	public MonsterSkeleton(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Skeleton"), theDungeon);
+		ArrayList<Float> myStats = monsterstats.get("Skeleton");
+		int maxhp = myStats.get(1).intValue();
+		int admax = myStats.get(2).intValue();
+		int admin = myStats.get(3).intValue();
+		float achance = myStats.get(4);
+		float abilitychance = myStats.get(5);
+		float healchance = myStats.get(6);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
-				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
+				MY_ABILITY, maxhp, admin, admax, achance, abilitychance, healchance);
 	}
 
 	@Override

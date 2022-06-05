@@ -2,6 +2,10 @@ package model;
 
 import view.Interface;
 
+import java.util.ArrayList;
+
+import static model.Dungeon.monsterstats;
+
 public class MonsterCultist extends Monster {
 
 	private final String MY_DESCRIPTION = "Mustered from the souls of anguish, rises a" +
@@ -10,17 +14,19 @@ public class MonsterCultist extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'C';
 	private final String MY_ABILITY = "Spirit Explosion";
 	private int MY_ABILITY_DAMAGE = 19;
-	private int MY_MAX_HP = 55;
-	private int MY_AD_MAX = 22;
-	private int MY_AD_MIN = 13;
-	private float MY_ACHANCE = (float) 0.8;
-	private float MY_ABILITYCHANCE = (float) 0.14;
-	private float MY_HEAL_CHANCE = (float) 0.15;
 
 	public MonsterCultist(Dungeon theDungeon, MonsterFactory theMonsterFactory) {
 		super(theMonsterFactory.createName("Cultist"), theDungeon);
+
+		ArrayList<Float> myStats = monsterstats.get("Cultist");
+		int maxhp = myStats.get(1).intValue();
+		int admax = myStats.get(2).intValue();
+		int admin = myStats.get(3).intValue();
+		float achance = myStats.get(4);
+		float abilitychance = myStats.get(5);
+		float healchance = myStats.get(6);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,
-				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
+				MY_ABILITY, maxhp, admin, admax, achance, abilitychance, healchance);
 	}
 
 	@Override
