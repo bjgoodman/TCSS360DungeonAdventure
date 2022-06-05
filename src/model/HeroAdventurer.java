@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HeroAdventurer extends Hero {
@@ -12,12 +14,10 @@ public class HeroAdventurer extends Hero {
     private int MY_MAX_HP = 100;
     private int MY_AD_MAX = 32;
     private int MY_AD_MIN = 19;
-    private float MY_ACHANCE = (float) 0.69;
+    private float MY_ACHANCE = (float) 0.80;
     private float MY_ABILITYCHANCE = (float) 0.2;
 
-    //TODO either implement Def or remove it
-    //private float MY_DEF = (float) 0.4;
-    private float MY_BLOCK_CHANCE = (float) 0.33;
+    private float MY_BLOCK_CHANCE = (float) 0.55;
 
     public HeroAdventurer(String theName, Dungeon theDungeon) {
         super(theName, theDungeon);
@@ -28,20 +28,13 @@ public class HeroAdventurer extends Hero {
     @Override
     void useAbility(DungeonCharacter theTarget) {
         final float SWING_MULTIPLIER = (float) 1.5;
-        final float SWING_DEBUFF = (float) 0.8;
-
-        System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "!");
 
         if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-            int damageDone = Math.round(SWING_MULTIPLIER * damageDealt() * theTarget.getMyAttackReduction());
+            int damageDone = Math.round(SWING_MULTIPLIER * damageDealt());
             theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-//            String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
-//                    " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName() +
-//                    "'s defense dropped to " + Math.round(theTarget.getMyDefense() * 100) + "%.");
-//
-//            System.out.println(abilityText);
+            Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +damageDone + "!");
         } else {
-            System.out.println(this.getMyCharacterName() + "'s " + getMyAbility() + " missed!");
+            Interface.newEvent(this.getMyCharacterName() + "'s " + getMyAbility() + " missed!");
         }
     }
 }

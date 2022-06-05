@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 public class MonsterCultist extends Monster {
 
 	private final String MY_DESCRIPTION = "Mustered from the souls of anguish, rises a" +
@@ -27,8 +29,7 @@ public class MonsterCultist extends Monster {
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
 		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY_DAMAGE);
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "! Damage: " +
-				(MY_ABILITY_DAMAGE) + ". " +
-				theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +
+				(MY_ABILITY_DAMAGE) + "!");
 	}
 }

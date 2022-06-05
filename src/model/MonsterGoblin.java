@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import static model.MonsterFactory.theMonsterFactory;
 
 public class MonsterGoblin extends Monster {
@@ -14,14 +16,12 @@ public class MonsterGoblin extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'G';
 	private final String MY_ABILITY = "Air Slash";
 	private int MY_ABILITY_DAMAGE = 14;
-	private int MY_MAX_HP = 98;
+	private int MY_MAX_HP = 48;
 	private int MY_AD_MAX = 19;
 	private int MY_AD_MIN = 11;
 	private float MY_ACHANCE = (float) 0.75;
 	private float MY_ABILITYCHANCE = (float) 0.16;
 
-	//TODO Do something with this
-	//private float MY_DEF = (float) 0.17;
 	private float MY_HEAL_CHANCE = (float) 0.1;
 	
 	public MonsterGoblin(String theName, Dungeon theDungeon) {
@@ -33,8 +33,7 @@ public class MonsterGoblin extends Monster {
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
 		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY_DAMAGE);
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "! Damage: " +
-				(MY_ABILITY_DAMAGE) + ". " +
-				theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +
+				(MY_ABILITY_DAMAGE) + "! ");
 	}
 }

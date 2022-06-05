@@ -16,18 +16,32 @@ public class Dungeon {
 	private Room[][] myDungeon;
 	private int myHeight;
 	private int myWidth;
+	private boolean encapsulationActivated;
+
+	private boolean inheritanceActivated;
+
+	private boolean abstractionActivated;
+
+	private boolean polymorphismActivated;
 	
 	public Dungeon (int theHeight, int theWidth) {
 		myHeight = theHeight;
 		myWidth = theWidth;
-		
 		myIntDungeon = new int[myHeight][myWidth];
 		myIntDungeon = generateMaze(myHeight, myWidth, myIntDungeon);
 		myDungeon = dungeonOfRooms(myIntDungeon);
 		placePillars(myDungeon);
+		populateDungeonSkeletons(myDungeon);
+		populateDungeonEldritch(myDungeon);
+		populateDungeonGoblins(myDungeon);
+		populateDungeonOverlord(myDungeon);
+		populateDungeonOgre(myDungeon);
 		populateDungeonPotions(myDungeon);
 		populateDungeonPoisonPotions(myDungeon);
-
+		setEncapsulationActivated(false);
+		setAbstractionActivated(false);
+		setPolymorphismActivated(false);
+		setInheritanceActivated(false);
 	}
 	
 	public int[][] generateMaze(int theHeight, int theWidth, int[][] theDungeon) {
@@ -160,6 +174,81 @@ public class Dungeon {
 		 theDungeon[1][73] = new RoomOOPEncapsulation();
 	}
 
+	private void populateDungeonSkeletons(Room[][] theDungeon) {
+		final float SKELLY_CHANCE = (float) 0.02;
+
+		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
+			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
+				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
+					MonsterSkeleton skelly = new MonsterSkeleton("skeleton", this);
+					if(SKELLY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						((RoomPlain) theDungeon[i][j]).addOccupant(skelly);
+					}
+				}
+			}
+		}
+	}
+
+	private void populateDungeonGoblins(Room[][] theDungeon) {
+		final float GOBBO_CHANCE = (float) 0.02;
+
+		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
+			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
+				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
+					MonsterGoblin goblin = new MonsterGoblin("gobbo", this);
+					if(GOBBO_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						((RoomPlain) theDungeon[i][j]).addOccupant(goblin);
+					}
+				}
+			}
+		}
+	}
+
+	private void populateDungeonEldritch(Room[][] theDungeon) {
+		final float ELDY_CHANCE = (float) 0.005;
+
+		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
+			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
+				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
+					MonsterEldritch eldritch = new MonsterEldritch("skeleton", this);
+					if(ELDY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						((RoomPlain) theDungeon[i][j]).addOccupant(eldritch);
+					}
+				}
+			}
+		}
+	}
+
+	private void populateDungeonOverlord(Room[][] theDungeon) {
+		final float OVERLORD_CHANCE = (float) 0.0008;
+
+		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
+			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
+				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
+					MonsterOverlord overlord = new MonsterOverlord("overlord", this);
+					if(OVERLORD_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						((RoomPlain) theDungeon[i][j]).addOccupant(overlord);
+					}
+				}
+			}
+		}
+	}
+
+	private void populateDungeonOgre(Room[][] theDungeon) {
+		final float OGRE_CHANCE = (float) 0.0008;
+
+		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
+			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
+				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
+					MonsterOgre ogre = new MonsterOgre("ogre", this);
+					if(OGRE_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						((RoomPlain) theDungeon[i][j]).addOccupant(ogre);
+					}
+				}
+			}
+		}
+	}
+
 	 private void populateDungeonPotions(Room[][] theDungeon) {
 	 final float POTION_ROOM_CHANCE = (float) 0.02;
 
@@ -175,7 +264,7 @@ public class Dungeon {
 	 }
 
 	private void populateDungeonPoisonPotions(Room[][] theDungeon) {
-		final float POTION_ROOM_CHANCE = (float) 0.01;
+		final float POTION_ROOM_CHANCE = (float) 0.005;
 
 		for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
 			for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
@@ -230,5 +319,38 @@ public class Dungeon {
 	public int getMyWidth() {
 		return myWidth;
 	}
+
+	public boolean isEncapsulationActivated() {
+		return encapsulationActivated;
+	}
+
+	public void setEncapsulationActivated(boolean encapsulationActivated) {
+		this.encapsulationActivated = encapsulationActivated;
+	}
+	public boolean isPolymorphismActivated() {
+		return polymorphismActivated;
+	}
+
+	public void setPolymorphismActivated(boolean polymorphismActivated) {
+		this.polymorphismActivated = polymorphismActivated;
+	}
+
+	public boolean isInheritanceActivated() {
+		return inheritanceActivated;
+	}
+
+	public void setInheritanceActivated(boolean inheritanceActivated) {
+		this.inheritanceActivated = inheritanceActivated;
+	}
+
+	public boolean isAbstractionActivated() {
+		return abstractionActivated;
+	}
+
+	public void setAbstractionActivated(boolean abstractionActivated) {
+		this.abstractionActivated = abstractionActivated;
+	}
+
+
 }
  

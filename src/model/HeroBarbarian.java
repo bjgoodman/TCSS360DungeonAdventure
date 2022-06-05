@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HeroBarbarian extends Hero {
@@ -17,9 +19,6 @@ public class HeroBarbarian extends Hero {
 	private int MY_AD_MIN = 19;
 	private float MY_ACHANCE = (float) 0.69;
 	private float MY_ABILITYCHANCE = (float) 0.2;
-
-	//TODO Do something with this
-	//private float MY_DEF = (float) 0.4;
 	private float MY_BLOCK_CHANCE = (float) 0.33;
 
 	public HeroBarbarian(String theName, Dungeon theDungeon) {
@@ -36,16 +35,13 @@ public class HeroBarbarian extends Hero {
 		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "!");
 
 		if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-			int damageDone = SWING_MULTIPLIER * (Math.round(damageDealt() * theTarget.getMyAttackReduction()));
+			int damageDone = SWING_MULTIPLIER * (Math.round(damageDealt()));
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-			theTarget.setMyDefense(theTarget.getMyDefense() * SWING_DEBUFF);
 			String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
-					" to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName() +
-					"'s defense dropped to " + Math.round(theTarget.getMyDefense() * 100) + "%.");
-
-			System.out.println(abilityText);
+					" to " + theTarget.getMyCharacterName() + ".");
+			Interface.newEvent(abilityText);
 		} else {
-			System.out.println(this.getMyCharacterName() + "'s " + getMyAbility() + " missed!");
+			Interface.newEvent(this.getMyCharacterName() + "'s " + getMyAbility() + " missed!");
 		}
 	}
 }

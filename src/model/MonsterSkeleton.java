@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 import static model.MonsterFactory.theMonsterFactory;
@@ -13,15 +15,13 @@ public class MonsterSkeleton extends Monster {
 	private final String MY_CHARACTER_TYPE = "Skeleton";
 	private final char MY_REPRESENTING_CHARACTER = 'S';
 	private final String MY_ABILITY = "Rickety Rushdown";
-	private int MY_MAX_HP = 80;
+	private int MY_MAX_HP = 45;
 	private int MY_AD_MAX = 18;
 	private int MY_AD_MIN = 9;
 	private float MY_ACHANCE = (float) 0.7;
 	private float MY_ABILITYCHANCE = (float) 0.15;
 
-	//TODO Do something with this
-	//private float MY_DEF = (float) 0.1;
-	private float MY_HEAL_CHANCE = (float) 0.05;
+	private float MY_HEAL_CHANCE = (float) 0.33;
 
 	public MonsterSkeleton(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Skeleton"), theDungeon);
@@ -31,49 +31,26 @@ public class MonsterSkeleton extends Monster {
 
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "!");
 		this.fiveFoldRushdown(theTarget, 1);
 		this.fiveFoldRushdown(theTarget, 2);
 		this.fiveFoldRushdown(theTarget, 3);
 		this.fiveFoldRushdown(theTarget, 4);
 		this.fiveFoldRushdown(theTarget, 5);
+		int damageDone = this.fiveFoldRushdown(theTarget, 1) + this.fiveFoldRushdown(theTarget, 2)
+				+ this.fiveFoldRushdown(theTarget, 3) + this.fiveFoldRushdown(theTarget, 4) +
+				this.fiveFoldRushdown(theTarget, 5);
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " + damageDone + "!");
 	}
 
-	// BAD CODE SMELL HERE?
-	private void fiveFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
+	private int fiveFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
 		float fiveFoldModifier = (float) 0.3;
 		if (theTarget.isAlive()) {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-				int damageDone = Math.round((damageDealt() * theTarget.getMyAttackReduction()) * fiveFoldModifier);
+				int damageDone = Math.round((damageDealt()) * fiveFoldModifier);
 				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-				String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
-						" to " + theTarget.getMyCharacterName() + ".");
-				if (strikeNumber == 1) {
-					abilityText += " One..!";
-				} else if (strikeNumber == 2) {
-					abilityText += " Two..!";
-				} else if (strikeNumber == 3) {
-					abilityText += " Three..!";
-				} else if (strikeNumber == 4) {
-					abilityText += " Four..!";
-				} else if (strikeNumber == 5) {
-					abilityText += " Five..!?";
-				}
-				System.out.println(abilityText);
-			} else {
-				if (strikeNumber == 1) {
-					System.out.println(this.getMyCharacterName() + "'s first hit missed!");
-				} else if (strikeNumber == 2) {
-					System.out.println(this.getMyCharacterName() + "'s second hit missed!");
-				} else if (strikeNumber == 3) {
-					System.out.println(this.getMyCharacterName() + "'s third hit missed!");
-				} else if (strikeNumber == 4) {
-					System.out.println(this.getMyCharacterName() + "'s fourth hit missed!");
-				} else if (strikeNumber == 5) {
-					System.out.println(this.getMyCharacterName() + "'s fifth hit missed!");
-				}
+				return damageDone;
 			}
-			System.out.println(theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
 		}
+		return 0;
 	}
 }

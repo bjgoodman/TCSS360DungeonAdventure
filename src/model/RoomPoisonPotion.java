@@ -5,12 +5,11 @@ import view.Interface;
 public class RoomPoisonPotion extends RoomConsumable {
     private final String MY_ROOM_TYPE = "Poison Potion Room";
     private final char MY_ROOM_CHARACTER = 'T';
-    private final int TRAP_VALUE = 20;
+    private final int TRAP_VALUE = 25;
 
     public RoomPoisonPotion() {
         setMyRoomType(MY_ROOM_TYPE);
         setMyRoomCharacter(MY_ROOM_CHARACTER);
-        setReactivatable(false);
     }
 
     void onActivate() {

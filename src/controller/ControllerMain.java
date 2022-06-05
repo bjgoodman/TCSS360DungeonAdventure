@@ -2,21 +2,8 @@ package controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
-import model.Dungeon;
-import model.HeroAdventurer;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
-import java.time.LocalDate;
-
+import model.*;
 import view.Interface;
 import view.View;
 
@@ -33,7 +20,7 @@ public class ControllerMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         gameStart(stage);
-        stage.setTitle("TEST");
+        stage.setTitle("Dungeon Delver");
         stage.show();
     }
 
@@ -42,7 +29,6 @@ public class ControllerMain extends Application {
         Dungeon dungeon = new Dungeon(35, 75);
 
         HeroAdventurer player = new HeroAdventurer("Player", dungeon);
-
         // monster factory, stored into arraylist of monster
         dungeon.placeHero(player);
         View view = new View(dungeon);

@@ -20,7 +20,6 @@ public abstract class DungeonCharacter {
 	private int myAttackDamageMax;
 	private float myChanceToHit;
 	private float myAbilityChance;
-	private float myDefense;
 	private int myX;
 	private int myY;
 
@@ -68,20 +67,57 @@ public abstract class DungeonCharacter {
 		if (this.getMyAbilityChance() > ThreadLocalRandom.current().nextFloat()) {
 			this.useAbility(theTarget);
 		} else {
-			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-				int damageDone = Math.round(damageDealt() * theTarget.getMyAttackReduction());		// ability behaviour moved into Hero and Monster classes, refactor this to BASIC Attack()
-				// needs to be fixed? characters ATK DMG differs from their min & max ATK PWR
-				theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
-				System.out.println(this.getMyCharacterName() + " dealt " + damageDone
-						+ " to " + theTarget.getMyCharacterName() + ". " + theTarget.getMyCharacterName()
-						+ "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
-			} else {
-				System.out.println(this.getMyCharacterName() + "'s attack missed!");
+			if (theTarget instanceof Monster) {
+				if (((Monster) theTarget).getMyHealChance() > ThreadLocalRandom.current().nextFloat()) {
+					healHelper(theTarget);
+				} else {
+					if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
+						attackHelper(theTarget);
+					} else {
+						Interface.newEvent(this.getMyCharacterName() + "'s attack missed!");
+					}
+				}
+			} else if (theTarget instanceof Hero) {
+				if (((Hero) theTarget).getMyBlockChance() > ThreadLocalRandom.current().nextFloat()) {
+					if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
+						blockHelper(theTarget);
+					} else {
+						Interface.newEvent(this.getMyCharacterName() + "'s attack missed!");
+					}
+				} else {
+					if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
+						attackHelper(theTarget);
+					} else {
+						Interface.newEvent(this.getMyCharacterName() + "'s attack missed!");
+					}
+				}
 			}
 		}
 		if (!theTarget.isAlive()) {
-			System.out.println(theTarget.getMyCharacterName() + " died!");
+			Interface.newEvent(theTarget.getMyCharacterName() + " died!");
 		}
+	}
+
+	private void healHelper(DungeonCharacter theTarget) {
+		if (((Monster) theTarget).getMyHealChance() > ThreadLocalRandom.current().nextFloat()) {
+			int heal = (int) Math.round(theTarget.getMyHitPointsMax() * 0.15);
+			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() + heal);
+			Interface.newEvent(theTarget.getMyCharacterName() + " healed for " + heal + ".");
+		}
+	}
+
+	private void attackHelper(DungeonCharacter theTarget) {
+		int damageDone = Math.round(damageDealt());
+		theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
+		Interface.newEvent(this.getMyCharacterName() + " dealt " + damageDone
+				+ " to " + theTarget.getMyCharacterName() + ".");
+	}
+
+	private void blockHelper(DungeonCharacter theTarget) {
+		int damageDone = (int) Math.round(damageDealt() * 0.5);
+		theTarget.setMyCurrentHitPoints(theTarget.myCurrentHitPoints - damageDone);
+		Interface.newEvent(theTarget.getMyCharacterName() + " blocked. " + this.getMyCharacterName() + " dealt " + damageDone
+				+ " to " + theTarget.getMyCharacterName() + ".");
 	}
 
 	public int damageDealt() {
@@ -182,18 +218,6 @@ public abstract class DungeonCharacter {
 		myAbilityChance = theAbilityChance;
 	}
 
-	public float getMyDefense() {
-		return myDefense;
-	}
-
-	public void setMyDefense(final float theDefense) {
-		myDefense = theDefense;
-	}
-
-	public float getMyAttackReduction() {
-		return (1 - getMyDefense());
-	}
-
 	public String getMyCharacterDescription() {
 		return myCharacterDescription;
 	}
@@ -231,12 +255,20 @@ public abstract class DungeonCharacter {
 	private void nextStep(int step_x, int step_y) {
 		if (this.isAlive()) {
 			if (this.getMyDungeon().getMyDungeon()[step_x][step_y] instanceof RoomOccupiable) {
-				((RoomOccupiable) this.getMyDungeon().getMyDungeon()[this.getMyX()][this.getMyY()]).removeOccupant(this);
-				setMyX(step_x);
-				setMyY(step_y);
-				((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).addOccupant(this);
-			} else {
-				Interface.newEvent("Invalid move.");
+				// if trying to enter a room with a monster
+				if (((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).hasOccupant()) {
+					this.Attack(((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).getMyOccupant());
+					if (((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).getMyOccupant().isAlive()) {
+						((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).getMyOccupant().Attack(this);
+					} else {
+						((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).removeOccupant();
+					}
+				} else {
+					((RoomOccupiable) this.getMyDungeon().getMyDungeon()[this.getMyX()][this.getMyY()]).removeOccupant();
+					setMyX(step_x);
+					setMyY(step_y);
+					((RoomOccupiable) this.getMyDungeon().getMyDungeon()[step_x][step_y]).addOccupant(this);
+				}
 			}
 		} else {
 			Interface.newEvent("You cannot do that, you are dead.");

@@ -1,5 +1,7 @@
 package model;
 
+import view.Interface;
+
 import static model.MonsterFactory.theMonsterFactory;
 
 public class MonsterEldritch extends Monster {
@@ -12,15 +14,12 @@ public class MonsterEldritch extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'E';
 	private final String MY_ABILITY = "Chaotic Blast"; // change the name?
 	private int MY_ABILITY_DAMAGE = 30;
-	private int MY_MAX_HP = 137;
+	private int MY_MAX_HP = 35;
 	private int MY_AD_MAX = 24;
 	private int MY_AD_MIN = 17;
 	private float MY_ACHANCE = (float) 0.75;
 	private float MY_ABILITYCHANCE = (float) 0.14;
-
-	//TODO Do something with this
-	//private float MY_DEF = (float) 0.25;
-	private float MY_HEAL_CHANCE = (float) 0.2;
+	private float MY_HEAL_CHANCE = (float) 0.25;
 
 	public MonsterEldritch(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Eldritch"), theDungeon);
@@ -31,8 +30,7 @@ public class MonsterEldritch extends Monster {
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
 		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY_DAMAGE);
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "! Damage: " +
-				(MY_ABILITY_DAMAGE) + ". " +
-				theTarget.getMyCharacterName() + "'s HP is now " + theTarget.getMyCurrentHitPoints() + ".");
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +
+				MY_ABILITY_DAMAGE + "!");
 	}
 }

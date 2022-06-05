@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MonsterFactory {
 
-    public static MonsterFactory theMonsterFactory;
+    public static MonsterFactory theMonsterFactory = new MonsterFactory();
     public String createName(String theMonsterType) {
         String name;
         String[] names = new String[]{"Figgs Vinaigrette", "Scratchensniff", "Ovaltine", "Bad News",

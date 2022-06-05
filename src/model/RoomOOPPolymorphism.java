@@ -1,18 +1,19 @@
 package model;
 
+import view.Interface;
+
 public class RoomOOPPolymorphism extends RoomActivatable {
     @Override
     public void onActivate() {
-        String name = getMyOccupant().getMyCharacterName();
-        Dungeon dungeon = getMyOccupant().getMyDungeon();
-        if (getMyOccupant() instanceof HeroAdventurer) {
-            setMyOccupant(new HeroBarbarian(name, dungeon));
-        } else if (getMyOccupant() instanceof HeroBarbarian) {
-            setMyOccupant(new HeroEnchantress(name, dungeon));
-        } else if (getMyOccupant() instanceof HeroBarbarian) {
-            setMyOccupant(new HeroThief(name, dungeon));
-        } else {
-            setMyOccupant(new HeroAdventurer(name, dungeon));
+        ((Hero) getMyOccupant()).setHasPolymorphism(true);
+        this.setHasBeenActivated(true);
+        Interface.newEvent("Polymorphism activated.");
+        getMyOccupant().getMyDungeon().setPolymorphismActivated(true);
+        if (getMyOccupant().getMyDungeon().isAbstractionActivated() &&
+                getMyOccupant().getMyDungeon().isEncapsulationActivated() &&
+                getMyOccupant().getMyDungeon().isInheritanceActivated() &&
+                getMyOccupant().getMyDungeon().isPolymorphismActivated()) {
+            Interface.newEvent("You win!");
         }
     }
 }

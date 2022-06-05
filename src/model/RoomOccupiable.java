@@ -26,7 +26,7 @@ public abstract class RoomOccupiable extends Room {
         setHasOccupant(true);
     }
 
-    public void removeOccupant(DungeonCharacter theOccupant) {
+    public void removeOccupant() {
         setMyOccupant(null);
         setHasOccupant(false);
     }
