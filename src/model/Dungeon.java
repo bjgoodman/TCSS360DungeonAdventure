@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
@@ -11,11 +13,15 @@ import java.util.concurrent.ThreadLocalRandom;
  * http://www.migapro.com/depth-first-search/
  * @author Benji
  */
-public class Dungeon {
+public class Dungeon implements Serializable {
+	@Serial
+	private static final long serialVersionUID = -1522663614213628512L;
 	private int[][] myIntDungeon;
 	private Room[][] myDungeon;
 	private int myHeight;
 	private int myWidth;
+
+	private ArrayList<Monster> monsterList = new ArrayList<>();
 	private boolean encapsulationActivated;
 
 	private boolean inheritanceActivated;
@@ -182,6 +188,7 @@ public class Dungeon {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterSkeleton skelly = new MonsterSkeleton("skeleton", this);
 					if(SKELLY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						monsterList.add(skelly);
 						((RoomPlain) theDungeon[i][j]).addOccupant(skelly);
 					}
 				}
@@ -197,6 +204,7 @@ public class Dungeon {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterGoblin goblin = new MonsterGoblin("gobbo", this);
 					if(GOBBO_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						monsterList.add(goblin);
 						((RoomPlain) theDungeon[i][j]).addOccupant(goblin);
 					}
 				}
@@ -212,6 +220,7 @@ public class Dungeon {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterEldritch eldritch = new MonsterEldritch("skeleton", this);
 					if(ELDY_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						monsterList.add(eldritch);
 						((RoomPlain) theDungeon[i][j]).addOccupant(eldritch);
 					}
 				}
@@ -227,6 +236,7 @@ public class Dungeon {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterOverlord overlord = new MonsterOverlord("overlord", this);
 					if(OVERLORD_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						monsterList.add(overlord);
 						((RoomPlain) theDungeon[i][j]).addOccupant(overlord);
 					}
 				}
@@ -242,6 +252,7 @@ public class Dungeon {
 				if (theDungeon[i][j] instanceof RoomPlain && !((RoomPlain) theDungeon[i][j]).hasOccupant()) {
 					MonsterOgre ogre = new MonsterOgre("ogre", this);
 					if(OGRE_CHANCE >= ThreadLocalRandom.current().nextFloat()) {
+						monsterList.add(ogre);
 						((RoomPlain) theDungeon[i][j]).addOccupant(ogre);
 					}
 				}
@@ -250,7 +261,7 @@ public class Dungeon {
 	}
 
 	 private void populateDungeonPotions(Room[][] theDungeon) {
-	 final float POTION_ROOM_CHANCE = (float) 0.02;
+	 final float POTION_ROOM_CHANCE = (float) 0.03;
 
 	 for (int i = 0; i <= (this.myIntDungeon.length - 1); i++) {
 		 for (int j = 0; j <= (this.myIntDungeon[0].length - 1); j++) {
@@ -284,20 +295,26 @@ public class Dungeon {
 	 for (int i = 0; i <= (this.myDungeon.length - 1); i++) {
 		 for (int j = 0; j <= (this.myDungeon[0].length - 1); j++) {
 			 if (myDungeon[i][j] instanceof RoomOccupiable) {
-				 if (((RoomOccupiable) myDungeon[i][j]).getMyOccupant() instanceof Hero) {
+				 if (((RoomOccupiable) myDungeon[i][j]).hasOccupant()) {
 					 str += ((RoomOccupiable) myDungeon[i][j]).getMyOccupant().getMyCharacterRepresentation();
 				 } else {
 					 str += ' ';
 				 }
 			 } else if (myDungeon[i][j] instanceof RoomWall) {
-				 str += '#';
+				 str += '?';
 			 } else if (myDungeon[i][j] instanceof RoomPotion) {
 				 str += "P";
+			 } else if (myDungeon[i][j] instanceof RoomPoisonPotion) {
+				 str += "p";
 			 }
 		   }
 		 str += '\n';
 	 	}
 	 return str;
+	}
+
+	public ArrayList<Monster> getMonsterList() {
+		return monsterList;
 	}
 
 	public Dungeon getDungeon() {

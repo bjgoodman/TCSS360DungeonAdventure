@@ -14,7 +14,7 @@ public class MonsterEldritch extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'E';
 	private final String MY_ABILITY = "Chaotic Blast"; // change the name?
 	private int MY_ABILITY_DAMAGE = 30;
-	private int MY_MAX_HP = 35;
+	private int MY_MAX_HP = 45;
 	private int MY_AD_MAX = 24;
 	private int MY_AD_MIN = 17;
 	private float MY_ACHANCE = (float) 0.75;

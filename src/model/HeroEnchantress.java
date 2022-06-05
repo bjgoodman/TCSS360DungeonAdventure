@@ -14,7 +14,7 @@ public class HeroEnchantress extends Hero {
 	private final String MY_CHARACTER_TYPE = "Human";
 	private final String MY_ABILITY = "Revitalise";
 	private int MY_MAX_HP = 100;
-	private int MY_AD_MAX = 29;
+	private int MY_AD_MAX = 35;
 	private int MY_AD_MIN = 21;
 	private float MY_ACHANCE = (float) 0.7;
 	private float MY_ABILITYCHANCE = (float) 0.33;

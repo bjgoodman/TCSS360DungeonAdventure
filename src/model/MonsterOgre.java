@@ -16,7 +16,7 @@ public class MonsterOgre extends Monster {
 	private int MY_AD_MIN = 19;
 	private float MY_ACHANCE = (float) 0.75;
 	private float MY_ABILITYCHANCE = (float) 0.18;
-	private float MY_HEAL_CHANCE = (float) 0.33;
+	private float MY_HEAL_CHANCE = (float) 0.15;
 
 	public MonsterOgre(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Ogre"), theDungeon);

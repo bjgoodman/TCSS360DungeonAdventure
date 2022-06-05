@@ -9,8 +9,8 @@ public class MonsterFactory {
         String name;
         String[] names = new String[]{"Figgs Vinaigrette", "Scratchensniff", "Ovaltine", "Bad News",
         " Bud 'Lite' Hootkins", "Cornbread Rubbins", "Worm", "Greasy Jim Johnson", "Skidmark Clutterbuck",
-                "Schlomo Splern", "Al Capella", "Russel N. Bushes", "Dain Bramage", "Roamin' Tacoma Joe",
-        "Name", "Unnamed", "Name of the Nameless", "D'Pengu", "Thief Admirer", "Barbarian Dropout",
+                "Schlomo Splern", "Al Capella", "Russel N. Bushes", "Dain Bramage", "Roamin' Joe", "Taco Man",
+        "Name", "Unnamed", "Name of the Nameless", "D'Pengu", "Thief Admirer", "Barbarian Dropout", "Carmack",
         "Reclusive Adventurer", "Enchantress Stalker"};
         int rand = ThreadLocalRandom.current().nextInt(names.length);
         name = names[rand] + " the " + theMonsterType;

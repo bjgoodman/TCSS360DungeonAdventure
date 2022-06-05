@@ -10,14 +10,11 @@ public class MonsterCultist extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'C';
 	private final String MY_ABILITY = "Spirit Explosion";
 	private int MY_ABILITY_DAMAGE = 19;
-	private int MY_MAX_HP = 113;
+	private int MY_MAX_HP = 55;
 	private int MY_AD_MAX = 22;
 	private int MY_AD_MIN = 13;
 	private float MY_ACHANCE = (float) 0.8;
 	private float MY_ABILITYCHANCE = (float) 0.14;
-
-	//TODO Do something with this
-	//private float MY_DEF = (float) 0.22;
 	private float MY_HEAL_CHANCE = (float) 0.15;
 
 	public MonsterCultist(Dungeon theDungeon, MonsterFactory theMonsterFactory) {

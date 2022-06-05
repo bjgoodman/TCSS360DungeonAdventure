@@ -1,6 +1,11 @@
 package model;
 
-public abstract class Room {
+import java.io.Serial;
+import java.io.Serializable;
+
+public abstract class Room implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 8364789748739375438L;
 	private String myRoomType;
 	private char myRoomCharacter;
 

@@ -11,7 +11,7 @@ public class HeroAdventurer extends Hero {
     private final char MY_REPRESENTING_CHARACTER = 'H';
     private final String MY_CHARACTER_TYPE = "Human";
     private final String MY_ABILITY = "Heroic Strike";
-    private int MY_MAX_HP = 100;
+    private int MY_MAX_HP = 140;
     private int MY_AD_MAX = 32;
     private int MY_AD_MIN = 19;
     private float MY_ACHANCE = (float) 0.80;

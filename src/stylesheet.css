@@ -11,6 +11,47 @@
     -fx-text-fill: white;
 }
 
+.new_game {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.new_game_adv {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.new_game_barb {
+    -fx-background-color: rgb(20, 20, 20);
+}
+.new_game_thief {
+    -fx-background-color: rgb(20, 20, 20);
+}
+.new_game_enchantress {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.save_game {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.load_game {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.about_game {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.instructions_game {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+
+.menu_bar {
+    -fx-translate-y: 590;
+    -fx-translate-x: 35;
+    -fx-background-color: rgb(20, 20, 20);
+}
+
 .status_bar {
     -fx-min-width: 250;
     -fx-max-width: 250;

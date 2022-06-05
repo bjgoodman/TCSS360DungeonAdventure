@@ -15,11 +15,11 @@ public class HeroBarbarian extends Hero {
 	private final String MY_CHARACTER_TYPE = "Human";
 	private final String MY_ABILITY = "Dismembering Swing";
 	private int MY_MAX_HP = 175;
-	private int MY_AD_MAX = 32;
-	private int MY_AD_MIN = 19;
+	private int MY_AD_MAX = 52;
+	private int MY_AD_MIN = 8;
 	private float MY_ACHANCE = (float) 0.69;
 	private float MY_ABILITYCHANCE = (float) 0.2;
-	private float MY_BLOCK_CHANCE = (float) 0.33;
+	private float MY_BLOCK_CHANCE = (float) 0.45;
 
 	public HeroBarbarian(String theName, Dungeon theDungeon) {
 		super(theName, theDungeon);
@@ -30,15 +30,12 @@ public class HeroBarbarian extends Hero {
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
 		final int SWING_MULTIPLIER = 2;
-		final float SWING_DEBUFF = (float) 0.8;
-
-		System.out.println(this.getMyCharacterName() + " used " + this.getMyAbility() + "!");
 
 		if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 			int damageDone = SWING_MULTIPLIER * (Math.round(damageDealt()));
 			theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-			String abilityText = (this.getMyCharacterName() + " dealt " + damageDone +
-					" to " + theTarget.getMyCharacterName() + ".");
+			String abilityText = (this.getMyCharacterName() + " used " + getMyAbility() + ", dealing " +
+					damageDone + "!");
 			Interface.newEvent(abilityText);
 		} else {
 			Interface.newEvent(this.getMyCharacterName() + "'s " + getMyAbility() + " missed!");

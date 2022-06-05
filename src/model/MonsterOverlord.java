@@ -16,7 +16,7 @@ public class MonsterOverlord extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'O';
 	private int MY_MAX_HP = 100;
 	private int MY_AD_MAX = 28;
-	private int MY_AD_MIN = 21;
+	private int MY_AD_MIN = 15;
 	private float MY_ACHANCE = (float) 0.8;
 	private float MY_ABILITYCHANCE = (float) 0.21;
 
@@ -38,7 +38,7 @@ public class MonsterOverlord extends Monster {
 	}
 
 	private int threeFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
-		float threeFoldModifier = (float) 0.66;
+		float threeFoldModifier = (float) 0.45;
 		if (theTarget.isAlive()) {
 			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
 				int damageDone = Math.round((damageDealt()) * threeFoldModifier);

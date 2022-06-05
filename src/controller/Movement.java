@@ -82,6 +82,8 @@ public class Movement {
                 player.setMyY(73);
                 ((RoomOOPEncapsulation) player.getMyDungeon().getMyDungeon()[1][73]).addOccupant(player);
                 ((RoomOOPEncapsulation) player.getMyDungeon().getMyDungeon()[1][73]).onActivate();
+            } else if (event.getCode() == KeyCode.M) {
+                System.out.println(player.getMyDungeon().toString());
             }
             scene.setRoot(view.draw(player));
             stage.setScene(scene);

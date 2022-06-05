@@ -2,12 +2,15 @@ package model;
 
 import view.Interface;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class DungeonCharacter {
+public abstract class DungeonCharacter implements Serializable {
 	private static final int ZERO = 0;
 	private static final int ONE = 1;
-
+	@Serial
+	private static final long serialVersionUID = -3603366188044536342L;
 	private String myCharacterName;
 	private String myCharacterDescription;
 	private String myCharacterType;
@@ -68,14 +71,13 @@ public abstract class DungeonCharacter {
 			this.useAbility(theTarget);
 		} else {
 			if (theTarget instanceof Monster) {
+				if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
+					attackHelper(theTarget);
+				} else {
+					Interface.newEvent(this.getMyCharacterName() + "'s attack missed!");
+				}
 				if (((Monster) theTarget).getMyHealChance() > ThreadLocalRandom.current().nextFloat()) {
 					healHelper(theTarget);
-				} else {
-					if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-						attackHelper(theTarget);
-					} else {
-						Interface.newEvent(this.getMyCharacterName() + "'s attack missed!");
-					}
 				}
 			} else if (theTarget instanceof Hero) {
 				if (((Hero) theTarget).getMyBlockChance() > ThreadLocalRandom.current().nextFloat()) {

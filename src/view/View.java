@@ -54,6 +54,10 @@ public class View {
             playerImage = adventurer;
         } else if (player instanceof HeroBarbarian) {
             playerImage = barbarian;
+        } else if (player instanceof HeroEnchantress) {
+            playerImage = enchantress;
+        } else if (player instanceof HeroThief) {
+            playerImage = thief;
         }
 
         /* DRAW GAME BOARD */
