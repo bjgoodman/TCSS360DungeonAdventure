@@ -11,7 +11,7 @@ import java.io.*;
 
 public class ControllerMain extends Application {
 
-
+    private SaveManager sm = new SaveManager();
 
     public static void main(String[] args) {
         launch(args);
@@ -26,6 +26,8 @@ public class ControllerMain extends Application {
 
     private void gameStart(Stage primaryStage, int characterSelect, String playerName) throws IOException {
 
+//        Scene charSelect = new Scene();
+
         Dungeon dungeon = new Dungeon(35, 75);
         Hero player = null;
 
@@ -39,7 +41,20 @@ public class ControllerMain extends Application {
             player = new HeroThief(playerName, dungeon);
         }
 
+        dungeon.setMyPlayer(player);
         dungeon.placeHero(player);
+        View view = new View(dungeon);
+        view.loadAssets();
+        startMessage();
+        Scene scene = new Scene(view.draw(player), 1250, 720);
+        scene.getStylesheets().add("./stylesheet.css");
+        new Movement(scene, view, primaryStage, player);
+        primaryStage.setScene(scene);
+    }
+
+    public void gameLoad(Stage primaryStage) throws IOException {
+        Dungeon dungeon = sm.loadGame();
+        Hero player = dungeon.getMyPlayer();
         View view = new View(dungeon);
         view.loadAssets();
         startMessage();
@@ -56,60 +71,6 @@ public class ControllerMain extends Application {
         Interface.newEvent(" ");
     }
 
-    private void saveGame(Dungeon theDungeon) {
-        String filename = "savegame.txt";
 
-        // Serialization
-        try {
-
-            // Saving of object in a file
-            FileOutputStream file = new FileOutputStream
-                    (filename);
-            ObjectOutputStream out = new ObjectOutputStream
-                    (file);
-
-            // Method for serialization of object
-            out.writeObject(theDungeon);
-
-            out.close();
-            file.close();
-        }
-
-        catch (IOException ex) {
-            System.out.println("IOException is caught");
-        }
-    }
-
-    private Dungeon loadGame() {
-        String filename = "savegame.txt";
-
-        try {
-
-            // Reading the object from a file
-            FileInputStream file = new FileInputStream
-                    (filename);
-            ObjectInputStream in = new ObjectInputStream
-                    (file);
-
-            // Method for deserialization of object
-            Dungeon dungeon = (Dungeon) in.readObject();
-
-            in.close();
-            file.close();
-
-            return dungeon;
-        }
-
-        catch (IOException ex) {
-            System.out.println("IOException is caught");
-        }
-
-        catch (ClassNotFoundException ex) {
-            System.out.println("ClassNotFoundException" +
-                    " is caught");
-        }
-
-        return null;
-    }
 
 }

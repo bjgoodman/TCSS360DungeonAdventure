@@ -10,14 +10,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Hero;
+import model.SaveManager;
 
 public class Interface {
     private static String[] message = new String[4];
     private Image fileImage;
     private Image aboutImage;
+    private SaveManager sm = new SaveManager();
 
     public Interface(Pane root, Hero player) {
-        menuBar(root);
+        menuBar(root, player);
         statusArea(root);
         statusBar(root, player);
     }
@@ -57,12 +59,12 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
-    private void menuBar(Pane root) {
+    private void menuBar(Pane root, Hero player) {
         Image fileImage = new Image("file:assets/misc/file.png");
         Image aboutImage = new Image("file:assets/misc/about.png");
         MenuBar menuBar = new MenuBar();
-        Menu file = new Menu("File");
-        Menu about = new Menu("About");
+        Menu file = new Menu("File ");
+        Menu about = new Menu("About ");
         MenuItem newGameAdventurer = new MenuItem(" Adventurer ");
         MenuItem newGameBarb = new MenuItem(" Barbarian ");
         MenuItem newGameThief = new MenuItem(" Thief ");
@@ -71,7 +73,7 @@ public class Interface {
         MenuItem loadGame = new MenuItem(" Load Game ");
         MenuItem aboutGame = new MenuItem(" About ");
         MenuItem instructionsGame = new MenuItem(" How To Play ");
-        Menu newGameSubMenu = new Menu("New Game ");
+        Menu newGameSubMenu = new Menu(" New Game ");
 
         newGameSubMenu.getStyleClass().add("new_game");
         newGameAdventurer.getStyleClass().add("new_game_adv");

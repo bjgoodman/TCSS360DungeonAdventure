@@ -14,6 +14,7 @@ public class MonsterOverlord extends Monster {
 	private final String MY_CHARACTER_TYPE = "Overlord";
 	private final String MY_ABILITY = "Threefold Slice";
 	private final char MY_REPRESENTING_CHARACTER = 'O';
+	private int MY_ABILITY_DAMAGE = 35;
 	private int MY_MAX_HP = 100;
 	private int MY_AD_MAX = 28;
 	private int MY_AD_MIN = 15;
@@ -28,24 +29,10 @@ public class MonsterOverlord extends Monster {
 				MY_ABILITY, MY_MAX_HP, MY_AD_MIN, MY_AD_MAX, MY_ACHANCE, MY_ABILITYCHANCE, MY_HEAL_CHANCE);
 	}
 
+	@Override
 	void useAbility(DungeonCharacter theTarget) {
-		this.threeFoldRushdown(theTarget, 1);
-		this.threeFoldRushdown(theTarget, 2);
-		this.threeFoldRushdown(theTarget, 3);
-		int damageDone = this.threeFoldRushdown(theTarget, 1) + this.threeFoldRushdown(theTarget, 2)
-				+ this.threeFoldRushdown(theTarget, 3);
-		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " + damageDone + "!");
-	}
-
-	private int threeFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
-		float threeFoldModifier = (float) 0.45;
-		if (theTarget.isAlive()) {
-			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-				int damageDone = Math.round((damageDealt()) * threeFoldModifier);
-				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-				return damageDone;
-			}
-		}
-		return 0;
+		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY_DAMAGE);
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +
+				(MY_ABILITY_DAMAGE) + "! ");
 	}
 }

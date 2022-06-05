@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MonsterDB [2]" uuid="3be2cd2f-ea81-481a-83dc-7bae5b916b39">
+    <data-source source="LOCAL" name="monsterDB.db" uuid="39c4c1e1-d0d5-4206-a06d-f19289ea5935">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/resources/MonsterDB</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/monsterDB.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

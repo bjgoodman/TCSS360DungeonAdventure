@@ -15,12 +15,12 @@ public class MonsterSkeleton extends Monster {
 	private final String MY_CHARACTER_TYPE = "Skeleton";
 	private final char MY_REPRESENTING_CHARACTER = 'S';
 	private final String MY_ABILITY = "Rickety Rushdown";
+	private int MY_ABILITY_DAMAGE = 19;
 	private int MY_MAX_HP = 45;
 	private int MY_AD_MAX = 18;
 	private int MY_AD_MIN = 9;
 	private float MY_ACHANCE = (float) 0.7;
 	private float MY_ABILITYCHANCE = (float) 0.15;
-
 	private float MY_HEAL_CHANCE = (float) 0.33;
 
 	public MonsterSkeleton(String theName, Dungeon theDungeon) {
@@ -31,26 +31,8 @@ public class MonsterSkeleton extends Monster {
 
 	@Override
 	void useAbility(DungeonCharacter theTarget) {
-		this.fiveFoldRushdown(theTarget, 1);
-		this.fiveFoldRushdown(theTarget, 2);
-		this.fiveFoldRushdown(theTarget, 3);
-		this.fiveFoldRushdown(theTarget, 4);
-		this.fiveFoldRushdown(theTarget, 5);
-		int damageDone = this.fiveFoldRushdown(theTarget, 1) + this.fiveFoldRushdown(theTarget, 2)
-				+ this.fiveFoldRushdown(theTarget, 3) + this.fiveFoldRushdown(theTarget, 4) +
-				this.fiveFoldRushdown(theTarget, 5);
-		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " + damageDone + "!");
-	}
-
-	private int fiveFoldRushdown(DungeonCharacter theTarget, int strikeNumber) {
-		float fiveFoldModifier = (float) 0.3;
-		if (theTarget.isAlive()) {
-			if (this.getMyChanceToHit() > ThreadLocalRandom.current().nextFloat()) {
-				int damageDone = Math.round((damageDealt()) * fiveFoldModifier);
-				theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - damageDone);
-				return damageDone;
-			}
-		}
-		return 0;
+		theTarget.setMyCurrentHitPoints(theTarget.getMyCurrentHitPoints() - MY_ABILITY_DAMAGE);
+		Interface.newEvent(this.getMyCharacterName() + " used " + this.getMyAbility() + ", dealing " +
+				(MY_ABILITY_DAMAGE) + "! ");
 	}
 }

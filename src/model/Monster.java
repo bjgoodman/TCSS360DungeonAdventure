@@ -14,7 +14,6 @@ public abstract class Monster extends DungeonCharacter {
 									final String theAbility, final int theHitPointsMax, final int theAttackDamageMin,
 									final int theAttackDamageMax, final float theChanceToHit, final float theAbilityChance,
 									float theHealChance) {
-
 		setMyCharacterDescription(theCharacterDescription);
 		setMyCharacterType(theCharacterType);
 		setMyCharacterRepresentation(theCharacterRepresentation);

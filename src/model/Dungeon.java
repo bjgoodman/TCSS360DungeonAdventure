@@ -1,7 +1,6 @@
 package model;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class Dungeon implements Serializable {
 	private boolean abstractionActivated;
 
 	private boolean polymorphismActivated;
+
+	private Hero myPlayer;
 	
 	public Dungeon (int theHeight, int theWidth) {
 		myHeight = theHeight;
@@ -337,6 +338,14 @@ public class Dungeon implements Serializable {
 		return myWidth;
 	}
 
+	public Hero getMyPlayer() {
+		return myPlayer;
+	}
+
+	public void setMyPlayer(Hero myPlayer) {
+		this.myPlayer = myPlayer;
+	}
+
 	public boolean isEncapsulationActivated() {
 		return encapsulationActivated;
 	}
@@ -367,7 +376,6 @@ public class Dungeon implements Serializable {
 	public void setAbstractionActivated(boolean abstractionActivated) {
 		this.abstractionActivated = abstractionActivated;
 	}
-
 
 }
  
