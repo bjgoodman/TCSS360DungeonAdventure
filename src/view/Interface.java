@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -8,6 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.Hero;
 import model.SaveManager;
@@ -19,7 +21,7 @@ public class Interface {
     private SaveManager sm = new SaveManager();
 
     public Interface(Pane root, Hero player) {
-        menuBar(root, player);
+        menuBar(root);
         statusArea(root);
         statusBar(root, player);
     }
@@ -59,7 +61,7 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
-    private void menuBar(Pane root, Hero player) {
+    private void menuBar(Pane root) {
         Image fileImage = new Image("file:assets/misc/file.png");
         Image aboutImage = new Image("file:assets/misc/about.png");
         MenuBar menuBar = new MenuBar();
@@ -102,6 +104,10 @@ public class Interface {
         menuBar.getMenus().add(file);
         menuBar.getMenus().add(about);
         menuBar.getStyleClass().add("menu_bar");
+
+        instructionsGame.setOnAction(e -> {
+
+        });
 
         root.getChildren().add(menuBar);
     }
