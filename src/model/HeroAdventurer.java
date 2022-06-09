@@ -4,6 +4,9 @@ import view.Interface;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Defines values and behaviors for the Adventurer class.
+ */
 public class HeroAdventurer extends Hero {
     private final int ZERO = 0;
     private final String MY_DESCRIPTION = "A base Hero. A reflection of who you are, and who you want" +
@@ -19,6 +22,12 @@ public class HeroAdventurer extends Hero {
 
     private float MY_BLOCK_CHANCE = (float) 0.55;
 
+    /**
+     * Constructor for an Adventurer.
+     *
+     * @param theName The name of the Adventurer
+     * @param theDungeon The dungeon in which the Adventurer resides
+     */
     public HeroAdventurer(String theName, Dungeon theDungeon) {
         super(theName, theDungeon);
         constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,

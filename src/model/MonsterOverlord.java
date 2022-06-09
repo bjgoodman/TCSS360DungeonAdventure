@@ -8,6 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
+/**
+ * Defines values and behaviors for Overlords.
+ */
 public class MonsterOverlord extends Monster {
 	private final String MY_DESCRIPTION = "The Overlord is a fierce and agile fighter, armed with"
 			+ " a deadly twinblade: a sword with blades on both sides of the hilt."
@@ -18,6 +21,12 @@ public class MonsterOverlord extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'O';
 	private int MY_ABILITY_DAMAGE = 35;
 
+	/**
+	 * Constructor for Overlords.
+	 *
+	 * @param theName The name of the Overlord
+	 * @param theDungeon The dungeon in which the Overlord resides
+	 */
 	public MonsterOverlord(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Overlord"), theDungeon);
 		ArrayList<Float> myStats = monsterstats.get("Overlord");

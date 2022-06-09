@@ -14,18 +14,32 @@ import javafx.scene.layout.Pane;
 import model.Hero;
 import model.SaveManager;
 
+/**
+ * The player interface.
+ */
 public class Interface {
     private static String[] message = new String[4];
     private Image fileImage;
     private Image aboutImage;
     private SaveManager sm = new SaveManager();
 
+    /**
+     * Constructor for the player interface.
+     *
+     * @param root The root
+     * @param player The player
+     */
     public Interface(Pane root, Hero player) {
         menuBar(root);
         statusArea(root);
         statusBar(root, player);
     }
 
+    /**
+     * Messages for new events.
+     *
+     * @param message The message
+     */
     public static void newEvent(String message) {
         Interface.message[3] = Interface.message[2];
         Interface.message[2] = Interface.message[1];
@@ -33,6 +47,11 @@ public class Interface {
         Interface.message[0] = message;
     }
 
+    /**
+     * Adds a status area to root.
+     *
+     * @param root The root
+     */
     private void statusArea(Pane root) {
         Label status_area = new Label(
                 message[3] + "\n"
@@ -48,6 +67,12 @@ public class Interface {
         root.getChildren().add(status_area);
     }
 
+    /**
+     * Adds a status bar to root.
+     *
+     * @param root The root
+     * @param player The player
+     */
     private void statusBar(Pane root, Hero player) {
         Label status_bar = new Label(
                 "Name: " + player.getMyCharacterName() +
@@ -61,6 +86,11 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
+    /**
+     * Adds a menu bar to root.
+     *
+     * @param root The root
+     */
     private void menuBar(Pane root) {
         Image fileImage = new Image("file:assets/misc/file.png");
         Image aboutImage = new Image("file:assets/misc/about.png");

@@ -2,7 +2,15 @@ package model;
 
 import java.io.*;
 
+/**
+ * A manager for saved games.
+ */
 public class SaveManager {
+    /**
+     * Save the game.
+     *
+     * @param theDungeon The dungeon being saved
+     */
     public void saveGame(Dungeon theDungeon) {
         String filename = "savegame.txt";
 
@@ -27,6 +35,11 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Load the game.
+     *
+     * @return the loaded dungeon
+     */
     public Dungeon loadGame() {
         String filename = "savegame.txt";
 

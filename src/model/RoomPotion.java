@@ -2,12 +2,17 @@ package model;
 
 import view.Interface;
 
+/**
+ * A Room with a potion to be consumed.
+ */
 public class RoomPotion extends RoomConsumable {
 	private final String MY_ROOM_TYPE = "Potion Room";
 	private final char MY_ROOM_CHARACTER = 'P';
 	private final int POTION_VALUE = 40;
 
-	
+	/**
+	 * Constructor for a potion Room.
+	 */
 	public RoomPotion() {
 		setMyRoomType(MY_ROOM_TYPE);
 		setMyRoomCharacter(MY_ROOM_CHARACTER);

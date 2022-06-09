@@ -4,6 +4,9 @@ import view.Interface;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Defines values and behaviors for the Barbarian class.
+ */
 public class HeroBarbarian extends Hero {
 	private static final int ZERO = 0;
 
@@ -21,6 +24,12 @@ public class HeroBarbarian extends Hero {
 	private float MY_ABILITYCHANCE = (float) 0.2;
 	private float MY_BLOCK_CHANCE = (float) 0.45;
 
+	/**
+	 * Constructor for the Barbarian class
+	 *
+	 * @param theName The name of the Barbarian
+	 * @param theDungeon The dungeon in which the Barbarian resides
+	 */
 	public HeroBarbarian(String theName, Dungeon theDungeon) {
 		super(theName, theDungeon);
 		constructionHelper(MY_DESCRIPTION, MY_CHARACTER_TYPE, MY_REPRESENTING_CHARACTER,

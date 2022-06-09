@@ -2,6 +2,9 @@ package model;
 
 import view.Interface;
 
+/**
+ * The Room in which the Pillar of Abstraction can be activated.
+ */
 public class RoomOOPAbstraction extends RoomActivatable {
 
     @Override

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import static model.Dungeon.monsterstats;
 
+/**
+ * Defines values and behaviors for Cultists.
+ */
 public class MonsterCultist extends Monster {
 
 	private final String MY_DESCRIPTION = "Mustered from the souls of anguish, rises a" +
@@ -15,6 +18,12 @@ public class MonsterCultist extends Monster {
 	private final String MY_ABILITY = "Spirit Explosion";
 	private int MY_ABILITY_DAMAGE = 19;
 
+	/**
+	 * Constructor for Cultists.
+	 *
+	 * @param theDungeon The dungeon in which the Cultist resides
+	 * @param theMonsterFactory The monster factory generating the Cultist's name
+	 */
 	public MonsterCultist(Dungeon theDungeon, MonsterFactory theMonsterFactory) {
 		super(theMonsterFactory.createName("Cultist"), theDungeon);
 

@@ -7,6 +7,9 @@ import model.*;
 
 import java.io.IOException;
 
+/**
+ * The player view.
+ */
 public class View {
 
     private Image wall, floor, potion, adventurer, barbarian, thief, enchantress, blood,
@@ -18,9 +21,20 @@ public class View {
     static final int TILE_SIZE = 16;
     Dungeon dungeon;
 
+    /**
+     * Constructor for the view.
+     *
+     * @param dungeon the dungeon
+     */
     public View(Dungeon dungeon) {
         this.dungeon = dungeon;
     }
+
+    /**
+     * Loads the assets.
+     *
+     * @throws IOException throws if IO breaks
+     */
     public void loadAssets() throws IOException {
         wall = new Image("file:assets/level/wall.png");
         floor = new Image("file:assets/level/floor1.png");
@@ -45,6 +59,12 @@ public class View {
         inheritanceactivated = new Image("file:assets/objectives/inheritanceactivated.png");
     }
 
+    /**
+     * Draws the game board.
+     *
+     * @param player The player
+     * @return a pane showing the game board
+     */
     public Pane draw(Hero player) {
         Pane root = new Pane();
 

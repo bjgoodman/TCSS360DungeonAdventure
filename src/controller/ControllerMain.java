@@ -9,21 +9,41 @@ import view.View;
 
 import java.io.*;
 
+
+/**
+ * Controller code for running the game.
+ */
 public class ControllerMain extends Application {
 
+    /**
+     * Creates a manager for saving.
+     */
     private SaveManager sm = new SaveManager();
 
+    /**
+     * Main method for starting the game.
+     *
+     * @param args unused
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        gameStart(stage, 1, "Conan");
+        gameStart(stage, 3, "Conan");
         stage.setTitle("Dungeon Delver");
         stage.show();
     }
 
+    /**
+     * Starts the game.
+     *
+     * @param primaryStage the primary stage
+     * @param characterSelect determines the class of the player
+     * @param playerName determines the name of the player
+     * @throws IOException throws if IO breaks
+     */
     public void gameStart(Stage primaryStage, int characterSelect, String playerName) throws IOException {
 
 //        Scene charSelect = new Scene();
@@ -52,6 +72,12 @@ public class ControllerMain extends Application {
         primaryStage.setScene(scene);
     }
 
+    /**
+     * Loads a previously saved game.
+     *
+     * @param primaryStage the primary stage
+     * @throws IOException throws if IO breaks
+     */
     public void gameLoad(Stage primaryStage) throws IOException {
         Dungeon dungeon = sm.loadGame();
         Hero player = dungeon.getMyPlayer();
@@ -64,6 +90,9 @@ public class ControllerMain extends Application {
         primaryStage.setScene(scene);
     }
 
+    /**
+     * Starting message for the game.
+     */
     private void startMessage() {
         Interface.newEvent(" ");
         Interface.newEvent("You have entered the dungeon.");

@@ -15,6 +15,11 @@ public enum DIRECTION {
         WEST.opposite = EAST;
     }
 
+    /**
+     * Gets the opposite of the set direction.
+     *
+     * @return the opposite direction
+     */
     public DIRECTION getOppositeDirection() {
         return opposite;
     }

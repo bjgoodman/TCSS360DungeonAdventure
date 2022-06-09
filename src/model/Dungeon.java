@@ -11,6 +11,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * Dungeon generation and behaviours.
+ *
  * @author Benjamin Goodman
  * @version 0.9 05/06/2022
  */
@@ -35,7 +37,13 @@ public class Dungeon implements Serializable {
 	private static SaveManager sm;
 
 	private Hero myPlayer;
-	
+
+	/**
+	 * Dungeon constructor.
+	 *
+	 * @param theHeight The height of the dungeon
+	 * @param theWidth The width of the dungeon
+	 */
 	public Dungeon (int theHeight, int theWidth) {
 		myHeight = theHeight;
 		myWidth = theWidth;
@@ -56,7 +64,15 @@ public class Dungeon implements Serializable {
 		setPolymorphismActivated(false);
 		setInheritanceActivated(false);
 	}
-	
+
+	/**
+	 * Generates a maze for the dungeon.
+	 *
+	 * @param theHeight The height of the maze
+	 * @param theWidth The width of the maze
+	 * @param theDungeon The dungeon in which the maze is being generated
+	 * @return the maze
+	 */
 	public int[][] generateMaze(int theHeight, int theWidth, int[][] theDungeon) {
 	    for (int i = 0; i < theHeight; i++)
 	        for (int j = 0; j < theWidth; j++)
@@ -82,7 +98,15 @@ public class Dungeon implements Serializable {
 	 
 	     return theDungeon;
 	 }
-	 
+
+	/**
+	 * Constructs the hallways of the dungeon.
+	 *
+	 * @param r Rows
+	 * @param c Columns
+	 * @param theDungeon The dungeon in which the hallways exist
+	 * @param theWidth The width of the hallways
+	 */
 	 public void makeHallways(int r, int c, int[][] theDungeon, int theWidth) {
 	     // 4 random directions
 	     int[] randDirs = generateRandomDirections();
@@ -222,7 +246,12 @@ public class Dungeon implements Serializable {
 		 }
 	 }
 
-	 public void placeHero(Hero theHero) {
+	/**
+	 * Places the hero in at a random starting point in the dungeon.
+	 *
+	 * @param theHero The hero being placed
+	 */
+	public void placeHero(Hero theHero) {
 		 int i = ThreadLocalRandom.current().nextInt(getMyWidth());
 		 int j = ThreadLocalRandom.current().nextInt(getMyHeight());
 
@@ -236,6 +265,11 @@ public class Dungeon implements Serializable {
 		 theHero.setMyY(i);
 	 }
 
+	/**
+	 * Places the pillars in the dungeon.
+	 *
+	 * @param theDungeon The dungeon in which the pillars are being placed
+	 */
 	private void placePillars(Room[][] theDungeon) {
 		 theDungeon[1][1] = new RoomOOPPolymorphism();
 		 theDungeon[33][1] = new RoomOOPAbstraction();
@@ -243,6 +277,11 @@ public class Dungeon implements Serializable {
 		 theDungeon[1][73] = new RoomOOPEncapsulation();
 	}
 
+	/**
+	 * Populates the dungeon with skeletons.
+	 *
+	 * @param theDungeon The dungeon in which the skeletons are being placed
+	 */
 	private void populateDungeonSkeletons(Room[][] theDungeon) {
 		final float SKELLY_CHANCE = (float) 0.02;
 
@@ -258,6 +297,11 @@ public class Dungeon implements Serializable {
 		}
 	}
 
+	/**
+	 * Populates the dungeon with goblins.
+	 *
+	 * @param theDungeon The dungeon in which the goblins are being placed
+	 */
 	private void populateDungeonGoblins(Room[][] theDungeon) {
 		final float GOBBO_CHANCE = (float) 0.02;
 
@@ -273,6 +317,11 @@ public class Dungeon implements Serializable {
 		}
 	}
 
+	/**
+	 * Populates the dungeon with eldritch monsters.
+	 *
+	 * @param theDungeon The dungeon in which the eldritch monsters are being placed
+	 */
 	private void populateDungeonEldritch(Room[][] theDungeon) {
 		final float ELDY_CHANCE = (float) 0.005;
 
@@ -288,6 +337,11 @@ public class Dungeon implements Serializable {
 		}
 	}
 
+	/**
+	 * Populated the dungeon with overlords.
+	 *
+	 * @param theDungeon The dungeon in which the overlords are being placed
+	 */
 	private void populateDungeonOverlord(Room[][] theDungeon) {
 		final float OVERLORD_CHANCE = (float) 0.0008;
 
@@ -303,6 +357,11 @@ public class Dungeon implements Serializable {
 		}
 	}
 
+	/**
+	 * Populates the dungeon with ogres.
+	 *
+	 * @param theDungeon The dungeon in which the ogres are being placed
+	 */
 	private void populateDungeonOgre(Room[][] theDungeon) {
 		final float OGRE_CHANCE = (float) 0.0008;
 
@@ -318,6 +377,11 @@ public class Dungeon implements Serializable {
 		}
 	}
 
+	/**
+	 * Populates the dungeon with potions.
+	 *
+	 * @param theDungeon The dungeon in which the potions are being placed
+	 */
 	 private void populateDungeonPotions(Room[][] theDungeon) {
 	 final float POTION_ROOM_CHANCE = (float) 0.03;
 
@@ -332,6 +396,11 @@ public class Dungeon implements Serializable {
  		}
 	 }
 
+	/**
+	 * Populates the dungeon with poison potions.
+	 *
+	 * @param theDungeon The dungeon in which the poison potions are being placed
+	 */
 	private void populateDungeonPoisonPotions(Room[][] theDungeon) {
 		final float POTION_ROOM_CHANCE = (float) 0.005;
 

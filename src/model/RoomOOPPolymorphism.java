@@ -2,6 +2,9 @@ package model;
 
 import view.Interface;
 
+/**
+ * The Room in which the Pillar of Polymorphism can be activated.
+ */
 public class RoomOOPPolymorphism extends RoomActivatable {
     @Override
     public void onActivate() {

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
+/**
+ * Defines values and behaviors for Goblins.
+ */
 public class MonsterGoblin extends Monster {
 
 
@@ -26,7 +29,13 @@ public class MonsterGoblin extends Monster {
 	private float MY_ABILITYCHANCE = (float) 0.16;
 
 	private float MY_HEAL_CHANCE = (float) 0.1;
-	
+
+	/**
+	 * Constructor for Goblins.
+	 *
+	 * @param theName The name of the Goblin
+	 * @param theDungeon The dungeon in which the Goblin resides
+	 */
 	public MonsterGoblin(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Goblin"), theDungeon);
 		ArrayList<Float> myStats = monsterstats.get("Goblin");

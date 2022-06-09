@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
+/**
+ * Defines values and behaviors for Ogres.
+ */
 public class MonsterOgre extends Monster {
 
 	private final String MY_DESCRIPTION = "";
@@ -14,6 +17,13 @@ public class MonsterOgre extends Monster {
 	private final char MY_REPRESENTING_CHARACTER = 'W';
 	private final String MY_ABILITY = "Hammer Down"; // will come back and figure ability out
 	private int MY_ABILITY_DAMAGE = 38;
+
+	/**
+	 * Constructor for Ogres.
+	 *
+	 * @param theName The name of the Ogre
+	 * @param theDungeon The dungeon in which the Ogre resides
+	 */
 	public MonsterOgre(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Ogre"), theDungeon);
 		ArrayList<Float> myStats = monsterstats.get("Ogre");

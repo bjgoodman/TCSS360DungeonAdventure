@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
+/**
+ * Defines values and behaviors for Eldritch monsters.
+ */
 public class MonsterEldritch extends Monster {
 
 	private final String MY_DESCRIPTION = "Horrific and untamed comes a abomination from the Proterazoic era " +
@@ -18,6 +21,12 @@ public class MonsterEldritch extends Monster {
 	private final String MY_ABILITY = "Chaotic Blast"; // change the name?
 	private int MY_ABILITY_DAMAGE = 30;
 
+	/**
+	 * Constructor for Eldritch monsters.
+	 *
+	 * @param theName The name of the Eldritch monster
+	 * @param theDungeon The dungeon in which the Eldritch monster resides
+	 */
 	public MonsterEldritch(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Eldritch"), theDungeon);
 		ArrayList<Float> myStats = monsterstats.get("Eldritch");

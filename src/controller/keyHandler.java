@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 import view.View;
 import model.*;
 
+/**
+ * Handles input from player.
+ */
 public class keyHandler {
 
     private Scene scene;
@@ -13,6 +16,14 @@ public class keyHandler {
     private Stage stage;
     private Hero player;
 
+    /**
+     * Constructor
+     *
+     * @param scene the scene
+     * @param view the view
+     * @param stage the stage
+     * @param player the player
+     */
     keyHandler(Scene scene, View view, Stage stage, Hero player) {
         this.scene = scene;
         this.view = view;
@@ -22,6 +33,9 @@ public class keyHandler {
         keyHandler();
     }
 
+    /**
+     * Determines behaviors of player inputs.
+     */
     private void keyHandler() {
 
         scene.setOnKeyPressed(event -> {

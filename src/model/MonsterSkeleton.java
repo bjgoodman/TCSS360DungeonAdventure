@@ -8,6 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import static model.Dungeon.monsterstats;
 import static model.MonsterFactory.theMonsterFactory;
 
+/**
+ * Defines values and behaviors for Skeletons.
+ */
 public class MonsterSkeleton extends Monster {
 
 	private final String MY_DESCRIPTION = "The Skeleton is a reanimated cadaver that " +
@@ -19,6 +22,12 @@ public class MonsterSkeleton extends Monster {
 	private final String MY_ABILITY = "Rickety Rushdown";
 	private int MY_ABILITY_DAMAGE = 19;
 
+	/**
+	 * Constructor for Skeletons
+	 *
+	 * @param theName The name of the Skeleton
+	 * @param theDungeon The dungeon in which the Skeleton resides
+	 */
 	public MonsterSkeleton(String theName, Dungeon theDungeon) {
 		super(theMonsterFactory.createName("Skeleton"), theDungeon);
 		ArrayList<Float> myStats = monsterstats.get("Skeleton");

@@ -2,6 +2,9 @@ package model;
 
 import view.Interface;
 
+/**
+ * The Room in which the Pillar of Encapsulation can be activated.
+ */
 public class RoomOOPEncapsulation extends RoomActivatable {
     @Override
     public void onActivate() {

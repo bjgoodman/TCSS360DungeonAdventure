@@ -2,9 +2,19 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * A factory for creating Monster names.
+ */
 public class MonsterFactory {
 
     public static MonsterFactory theMonsterFactory = new MonsterFactory();
+
+    /**
+     * Creates a name for a Monster.
+     *
+     * @param theMonsterType The Monster type
+     * @return the name
+     */
     public String createName(String theMonsterType) {
         String name;
         String[] names = new String[]{"Figgs Vinaigrette", "Scratchensniff", "Ovaltine", "Bad News",
